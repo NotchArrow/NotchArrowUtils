@@ -22,20 +22,5 @@ public class NotchArrowUtils implements ClientModInitializer {
 
 		// Register All TickEvents
 		TickRegistry.registerTicks();
-
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-		if (client.world != null && client.player != null) {
-			for (int x = client.player.getBlockX() - 10; x < client.player.getBlockX() + 10; x++) {
-				for (int y = client.player.getBlockY() - 10; y < client.player.getBlockY() + 10; y++) {
-					for (int z = client.player.getBlockZ() - 10; z < client.player.getBlockZ() + 10; z++) {
-						BlockPos pos = new BlockPos(x, y, z);
-						BlockState blockState = client.world.getBlockState(pos);
-						if (blockState.getBlock().getName().getString().equals("Diamond Ore")) {
-							System.out.println(String.format("Diamond at (%d, %d, %d)", pos.getX(), pos.getY(), pos.getZ()));
-						}
-					}
-				}
-			}
-		}});
 	}
 }
