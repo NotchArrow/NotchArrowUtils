@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "notcharrowutils",
+	"version": "${version}",
+	"name": "NotchArrow's Chat Utils",
+	"description": "Utilities for Minecraft through chat commands. All of the features of this mod are subcommands under '/utils'",
+	"authors": [
+		"NotchArrow"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/notcharrow-utils/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"notcharrowutils.NotchArrowUtils"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
