@@ -8,11 +8,10 @@
 		"NotchArrow"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/NotchArrow/notcharrowutils"
 	},
 	"license": "MIT",
-	"icon": "assets/notcharrow-utils/icon.png",
+	"icon": "assets/notcharrowutils/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
@@ -24,8 +23,5 @@
 		"minecraft": "~1.20.4",
 		"java": ">=17",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
