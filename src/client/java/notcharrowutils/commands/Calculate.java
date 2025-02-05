@@ -25,9 +25,11 @@ public class Calculate {
 		try {
 			Expression expression = new ExpressionBuilder(StringArgumentType.getString(context, "expression"))
 					.variables("s", "S")
-					.build()
-					.setVariable("s", 64)
-					.setVariable("S", 1728);
+					.build();
+
+			expression.setVariable("s", 64);
+			expression.setVariable("S", 1728);
+
 			double result = expression.evaluate();
 			client.player.sendMessage(TextFormat.styledText("Result: " + result));
 			return 1;

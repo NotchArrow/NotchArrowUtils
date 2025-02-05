@@ -5,9 +5,6 @@ package notcharrowutils;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
 import notcharrowutils.commands.CommandRegistry;
 import notcharrowutils.ticks.TickRegistry;
 
