@@ -3,6 +3,7 @@ package notcharrowutils.ticks;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.util.Hand;
+import notcharrowutils.config.ConfigManager;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class AutoFishTickHandler {
 
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (TickRegistry.autoFishMode && client.player != null) {
+			if (ConfigManager.config.tickregistryAutoFishMode && client.player != null) {
 				FishingBobberEntity bobber = client.player.fishHook;
 
 				if (bobber != null) {

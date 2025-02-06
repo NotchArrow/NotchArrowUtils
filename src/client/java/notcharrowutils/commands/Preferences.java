@@ -6,7 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.util.Formatting;
+import notcharrowutils.config.ConfigManager;
 import notcharrowutils.helper.SuggestionBuilder;
 import notcharrowutils.helper.TextFormat;
 
@@ -35,43 +35,38 @@ public class Preferences {
 				.then(literal("italic")
 						.executes(Preferences::executeItalic))
 				.then(literal("underline")
-						.executes(Preferences::executeUnderline))
-				.then(literal("reset")
-						.executes(Preferences::executeReset));
+						.executes(Preferences::executeUnderline));
 	}
 
 	private static int executeColor(CommandContext<FabricClientCommandSource> context) {
 		String colorPreference = StringArgumentType.getString(context, "Output Color");
-		TextFormat.COLOR = Formatting.valueOf(colorPreference.toUpperCase());
+		ConfigManager.config.textformatColor = colorPreference.toUpperCase();
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Preferences Changed Successfully!"));
 
 		return 1;
 	}
 
 	private static int executeBold(CommandContext<FabricClientCommandSource> context) {
-		TextFormat.BOLD = !TextFormat.BOLD;
+		ConfigManager.config.textformatBold = !ConfigManager.config.textformatBold;
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Preferences Changed Successfully!"));
 
 		return 1;
 	}
 
 	private static int executeItalic(CommandContext<FabricClientCommandSource> context) {
-		TextFormat.ITALIC = !TextFormat.ITALIC;
+		ConfigManager.config.textformatItalic = !ConfigManager.config.textformatItalic;
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Preferences Changed Successfully!"));
 
 		return 1;
 	}
 
 	private static int executeUnderline(CommandContext<FabricClientCommandSource> context) {
-		TextFormat.UNDERLINE = !TextFormat.UNDERLINE;
+		ConfigManager.config.textformatUnderline = !ConfigManager.config.textformatUnderline;
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Preferences Changed Successfully!"));
-
-		return 1;
-	}
-
-	private static int executeReset(CommandContext<FabricClientCommandSource> context) {
-		TextFormat.setDefaults();
-		client.player.sendMessage(TextFormat.styledText("Preferences Reset Successfully!"));
 
 		return 1;
 	}

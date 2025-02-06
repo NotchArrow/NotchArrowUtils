@@ -4,8 +4,8 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
+import notcharrowutils.config.ConfigManager;
 import notcharrowutils.helper.TextFormat;
-import notcharrowutils.ticks.TickRegistry;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
@@ -18,7 +18,8 @@ public class CoordinateOverlay {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		TickRegistry.coordinateOverlay = !TickRegistry.coordinateOverlay;
+		ConfigManager.config.tickregistryCoordinateOverlay = !ConfigManager.config.tickregistryCoordinateOverlay;
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Coordinate overlay toggled."));
 
 		return 1;

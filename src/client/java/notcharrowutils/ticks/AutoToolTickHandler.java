@@ -5,11 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
+import notcharrowutils.config.ConfigManager;
 
 public class AutoToolTickHandler {
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.player != null && client.crosshairTarget != null && TickRegistry.autoTool) {
+			if (client.player != null && client.crosshairTarget != null && ConfigManager.config.tickregistryAutoTool) {
 				if (client.crosshairTarget.getType() == HitResult.Type.BLOCK
 						&& client.options.attackKey.isPressed()
 						&& client.interactionManager.isBreakingBlock()) {

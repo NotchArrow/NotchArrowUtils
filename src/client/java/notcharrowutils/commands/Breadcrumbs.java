@@ -4,8 +4,8 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
+import notcharrowutils.config.ConfigManager;
 import notcharrowutils.helper.TextFormat;
-import notcharrowutils.ticks.TickRegistry;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
@@ -18,7 +18,8 @@ public class Breadcrumbs {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		TickRegistry.breadcrumbs = !TickRegistry.breadcrumbs;
+		ConfigManager.config.tickregistryBreadcrumbs = !ConfigManager.config.tickregistryBreadcrumbs;
+		ConfigManager.saveConfig();
 		client.player.sendMessage(TextFormat.styledText("Breadcrumbs toggled."));
 
 		return 1;

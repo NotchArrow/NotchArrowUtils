@@ -6,11 +6,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import notcharrowutils.config.ConfigManager;
 
 public class MobGrinderTickHandler {
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (TickRegistry.mobGrinderMode && client.player != null && client.crosshairTarget != null) {
+			if (ConfigManager.config.tickregistryMobGrinderMode && client.player != null && client.crosshairTarget != null) {
 				if (client.crosshairTarget.getType() == HitResult.Type.ENTITY) {
 					EntityHitResult hitResult = (EntityHitResult) client.crosshairTarget;
 					Entity target = hitResult.getEntity();
