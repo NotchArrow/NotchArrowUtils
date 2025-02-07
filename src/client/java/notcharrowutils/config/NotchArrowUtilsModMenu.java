@@ -54,7 +54,7 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 			"DARK_GRAY", "BLUE", "GREEN", "AQUA", "RED", "LIGHT_PURPLE", "YELLOW", "WHITE");
 
 		chat.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Chat Color"), ConfigManager.config.textformatColor)
-			      	.setTooltip("Changes the command feedback chat color")
+				.setTooltip(Text.of("Changes the command feedback chat color"))
 				.setDefaultValue(ConfigManager.config.textformatColor)
 				.setSelections(colorSuggestions)
 				.setSaveConsumer(newValue -> {
