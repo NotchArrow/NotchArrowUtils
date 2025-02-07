@@ -19,7 +19,6 @@ public class CommandRegistry {
 						.then(InventoryInfo.registerCommand())
 						.then(NightVision.registerCommand())
 						.then(AfkOptimize.registerCommand())
-						.then(Preferences.registerCommand())
 						.then(Calculate.registerCommand())
 						.then(CoordinateOverlay.registerCommand())
 						.then(AutoTool.registerCommand())
