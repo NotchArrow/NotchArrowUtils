@@ -10,6 +10,7 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryAutoFishMode = false;
 	public boolean tickregistryInstantFishingRecast = false;
 	public boolean tickregistryBreadcrumbs = false;
+	public int tickregistryBreadcrumbsMinimumSpacing = 1;
 	public int tickregistryBreadcrumbsViewDistance = 10;
 	public boolean tickregistryCoordinateOverlay = false;
 	public boolean tickregistryColorfulCoordinateOverlay = false;
