@@ -19,7 +19,7 @@ public class BreadcrumbsTickHandler {
 				if (client.player.isOnGround()) {
 					boolean tooConcentrated = false;
 					for (Vec3d pos : particlePositions) {
-						if (playerPos.isInRange(pos, 1)) {
+						if (playerPos.isInRange(pos, ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing)) {
 							tooConcentrated = true;
 						}
 					}
