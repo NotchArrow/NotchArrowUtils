@@ -12,5 +12,6 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryBreadcrumbs = false;
 	public int tickregistryBreadcrumbsViewDistance = 10;
 	public boolean tickregistryCoordinateOverlay = false;
+	public boolean tickregistryColorfulCoordinateOverlay = false;
 	public boolean tickregistryMobGrinderMode = false;
 }

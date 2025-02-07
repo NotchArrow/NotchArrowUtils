@@ -1,6 +1,3 @@
-// TODO
-// Rework config file naming and accesses to be more modularized and make it easier to add more settings
-
 package notcharrowutils;
 
 import net.fabricmc.api.ClientModInitializer;
