@@ -29,7 +29,7 @@ public class BreadcrumbsTickHandler {
 				}
 
 				for (Vec3d pos : particlePositions) {
-					if (playerPos.isInRange(pos, 10)) {
+					if (playerPos.isInRange(pos, ConfigManager.config.tickregistryBreadcrumbsViewDistance)) {
 						MinecraftClient.getInstance().particleManager.addParticle(ParticleTypes.END_ROD, pos.x, pos.y, pos.z, 0, 0, 0);
 					}
 				}

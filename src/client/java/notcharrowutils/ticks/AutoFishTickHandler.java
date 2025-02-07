@@ -28,7 +28,9 @@ public class AutoFishTickHandler {
 						client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
 						waterContactTime = -1;
 						try {
-							Thread.sleep(random.nextInt(1000 - 500 + 1) + 500);
+							if (!ConfigManager.config.tickregistryInstantFishingRecast) {
+								Thread.sleep(random.nextInt(1000 - 500 + 1) + 500);
+							}
 						} catch (InterruptedException ignored) {
 						}
 						client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
