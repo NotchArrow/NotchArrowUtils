@@ -81,6 +81,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryInstantFishingRecast = (Boolean) newValue,
 				parent);
 
+		addConfigEntryInteger(tweaks, "Breadcrumbs Minimum Spacing", ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing,
+				newValue -> ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing = (Integer) newValue,
+				parent, 0, 16);
+		
 		addConfigEntryInteger(tweaks, "Breadcrumbs View Distance", ConfigManager.config.tickregistryBreadcrumbsViewDistance,
 				newValue -> ConfigManager.config.tickregistryBreadcrumbsViewDistance = (Integer) newValue,
 				parent, 0, 100);
