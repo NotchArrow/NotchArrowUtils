@@ -50,6 +50,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryNightVision = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "No Fog", "Toggles fog", ConfigManager.config.mixinNoFog,
+				newValue -> ConfigManager.config.mixinNoFog = (Boolean) newValue,
+				parent);
+
 		// Chat
 		ConfigCategory chat = builder.getOrCreateCategory(Text.of("Chat Settings"));
 

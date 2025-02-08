@@ -22,4 +22,7 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryColorfulCoordinateOverlay = false;
 
 	public boolean tickregistryNightVision = false;
+
+
+	public boolean mixinNoFog = false;
 }

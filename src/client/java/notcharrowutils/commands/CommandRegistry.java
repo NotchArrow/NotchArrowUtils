@@ -25,6 +25,7 @@ public class CommandRegistry {
 						.then(MyNetherCoords.registerCommand())
 						.then(MyOverworldCoords.registerCommand())
 						.then(NightVision.registerCommand())
+						.then(NoFog.registerCommand())
 						.then(RandomDecimal.registerCommand())
 						.then(RandomNumber.registerCommand())
 		);
