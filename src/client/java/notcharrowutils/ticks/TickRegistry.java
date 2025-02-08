@@ -2,10 +2,11 @@ package notcharrowutils.ticks;
 
 public class TickRegistry {
 	public static void registerTicks() {
-		MobGrinderTickHandler.register();
+		AutoAttackTickHandler.register();
 		AutoToolTickHandler.register();
-		CoordinateOverlayTickHandler.register();
 		AutoFishTickHandler.register();
 		BreadcrumbsTickHandler.register();
+		CoordinateOverlayTickHandler.register();
+		NightVisionTickHandler.register();
 	}
 }

@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "notcharrowutils",
 	"version": "${version}",
-	"name": "NotchArrow's Chat Utils",
+	"name": "NotchArrow's Utils",
 	"description": "Utilities for Minecraft through chat commands. All of the features of this mod are subcommands under '/utils'",
 	"authors": [
 		"NotchArrow"

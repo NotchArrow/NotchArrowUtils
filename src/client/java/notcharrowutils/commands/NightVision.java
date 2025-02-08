@@ -4,15 +4,13 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import notcharrowutils.config.ConfigManager;
 import notcharrowutils.helper.TextFormat;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public class NightVision {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
-	private static boolean fullbrightEnabled = false;
 
 	public static LiteralArgumentBuilder<FabricClientCommandSource> registerCommand() {
 		return literal("nightvision")
@@ -20,14 +18,10 @@ public class NightVision {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		if (!fullbrightEnabled) {
-			client.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false, false));
-			client.player.sendMessage(TextFormat.styledText("Nightvision enabled."));
-		} else {
-			client.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
-			client.player.sendMessage(TextFormat.styledText("Nightvision disabled."));
+		if (client.player != null) {
+			client.player.sendMessage(TextFormat.styledText("Nightvision toggled."));
 		}
-		fullbrightEnabled = !fullbrightEnabled;
+		ConfigManager.config.tickregistryNightVision = !ConfigManager.config.tickregistryNightVision;
 
 		return 1;
 	}

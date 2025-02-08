@@ -26,6 +26,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		// General
 		ConfigCategory general = builder.getOrCreateCategory(Text.of("General Settings"));
 
+		addConfigEntryBoolean(general, "Auto Attack", "Toggles automatic attacking when you look at mobs", ConfigManager.config.tickregistryAutoAttack,
+				newValue -> ConfigManager.config.tickregistryAutoAttack = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Auto Fish", "Toggles automatic fishing", ConfigManager.config.tickregistryAutoFishMode,
 				newValue -> ConfigManager.config.tickregistryAutoFishMode = (Boolean) newValue,
 				parent);
@@ -42,8 +46,8 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryCoordinateOverlay = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(general, "Mob Grinder", "Toggles automatic attacking when you look at mobs", ConfigManager.config.tickregistryMobGrinderMode,
-				newValue -> ConfigManager.config.tickregistryMobGrinderMode = (Boolean) newValue,
+		addConfigEntryBoolean(general, "Nightvision", "Toggles permanent clientside nightvision", ConfigManager.config.tickregistryNightVision,
+				newValue -> ConfigManager.config.tickregistryNightVision = (Boolean) newValue,
 				parent);
 
 		// Chat
