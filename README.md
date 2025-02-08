@@ -1,6 +1,9 @@
 # NotchArrowUtils
 A clientside QoL fabric mod for Minecraft 1.20.4
 
+> First and maybe last Java project based on this number
+<img src="https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines">
+
 # Dependencies
 You will need:
 * [Fabric API](https://modrinth.com/mod/fabric-api)
