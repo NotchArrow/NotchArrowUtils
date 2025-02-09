@@ -4,8 +4,8 @@ A clientside QoL fabric mod for Minecraft 1.20.4
 `Modrinth Download will be here`
 
 # Showcase
-<img src="https://github.com/user-attachments/assets/5d49ab29-006b-4e0a-b5b6-087ae68ed5b3" width="640" height="360">
-<img src="https://github.com/user-attachments/assets/2d289275-a0c8-4850-8ec2-58e9e93c191c" width="640" height="360">
+<img alt="image" src="https://github.com/user-attachments/assets/5d49ab29-006b-4e0a-b5b6-087ae68ed5b3" width="640" height="360">
+<img alt="image" src="https://github.com/user-attachments/assets/2d289275-a0c8-4850-8ec2-58e9e93c191c" width="640" height="360">
 
 Images taken at 16 render distance, the latter using `/utils nofog` and `/utils nightvision`
 
@@ -30,4 +30,4 @@ This mod is entirely **clientside** meaning it can be used on any server, but so
 
 Thank you for using my mod! I'd love to hear any feedback.
 
-<img src="https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines">
+<img alt="image" src="https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines">
