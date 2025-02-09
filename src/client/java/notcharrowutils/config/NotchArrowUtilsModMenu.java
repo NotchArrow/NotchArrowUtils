@@ -46,6 +46,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryCoordinateOverlay = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Fast Place", "Places blocks quickly when holding right click", ConfigManager.config.tickregistryFastPlace,
+				newValue -> ConfigManager.config.tickregistryFastPlace = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Nightvision", "Toggles permanent clientside nightvision", ConfigManager.config.tickregistryNightVision,
 				newValue -> ConfigManager.config.tickregistryNightVision = (Boolean) newValue,
 				parent);
@@ -100,6 +104,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 
 		addConfigEntryBoolean(tweaks, "Colorful Coordinate Overlay", "Use chat coloring settings in the coordinate overlay", ConfigManager.config.tickregistryColorfulCoordinateOverlay,
 				newValue -> ConfigManager.config.tickregistryColorfulCoordinateOverlay = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(tweaks, "Floating Fast Place", "Allows midair Fast Place, disabled in multiplayer", ConfigManager.config.tickregistryFloatingFastPlace,
+				newValue -> ConfigManager.config.tickregistryFloatingFastPlace = (Boolean) newValue,
 				parent);
 
 

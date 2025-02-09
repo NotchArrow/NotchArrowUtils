@@ -20,6 +20,7 @@ public class CommandRegistry {
 						.then(DiamondFinder.registerCommand())
 						.then(EnchantInfo.registerCommand())
 						.then(ExpInfo.registerCommand())
+						.then(FastPlace.registerCommand())
 						.then(Help.registerCommand())
 						.then(InventoryInfo.registerCommand())
 						.then(MyNetherCoords.registerCommand())

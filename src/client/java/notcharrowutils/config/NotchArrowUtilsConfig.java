@@ -21,6 +21,9 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryCoordinateOverlay = false;
 	public boolean tickregistryColorfulCoordinateOverlay = false;
 
+	public boolean tickregistryFastPlace = false;
+	public boolean tickregistryFloatingFastPlace = false;
+
 	public boolean tickregistryNightVision = false;
 
 

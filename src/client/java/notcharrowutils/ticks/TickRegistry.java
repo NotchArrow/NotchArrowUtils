@@ -7,6 +7,7 @@ public class TickRegistry {
 		AutoFishTickHandler.register();
 		BreadcrumbsTickHandler.register();
 		CoordinateOverlayTickHandler.register();
+		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();
 	}
 }
