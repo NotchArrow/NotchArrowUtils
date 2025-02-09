@@ -13,6 +13,8 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryAutoFishMode = false;
 	public boolean tickregistryInstantFishingRecast = false;
 
+	public boolean tickregistryAutoReplant = false;
+
 	public boolean tickregistryAutoSprint = false;
 
 	public boolean tickregistryAutoTool = false;

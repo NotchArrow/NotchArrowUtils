@@ -5,6 +5,7 @@ public class TickRegistry {
 		AutoAttackTickHandler.register();
 		AutoToolTickHandler.register();
 		AutoFishTickHandler.register();
+		AutoReplantTickHandler.register();
 		AutoSprintTickHandler.register();
 		BreadcrumbsTickHandler.register();
 		CoordinateOverlayTickHandler.register();

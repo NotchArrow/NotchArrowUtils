@@ -13,6 +13,7 @@ public class CommandRegistry {
 						.then(AutoAttack.registerCommand())
 						.then(AutoFish.registerCommand())
 						.then(AutoSprint.registerCommand())
+						.then(AutoReplant.registerCommand())
 						.then(AutoTool.registerCommand())
 						.then(Breadcrumbs.registerCommand())
 						.then(Calculate.registerCommand())

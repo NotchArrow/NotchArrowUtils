@@ -34,6 +34,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoFishMode = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Auto Replant", "Toggles automatic replanting by right clicking while holding seeds", ConfigManager.config.tickregistryAutoReplant,
+				newValue -> ConfigManager.config.tickregistryAutoReplant = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Auto Sprint", "Toggles automatic sprinting when moving", ConfigManager.config.tickregistryAutoSprint,
 				newValue -> ConfigManager.config.tickregistryAutoSprint = (Boolean) newValue,
 				parent);
