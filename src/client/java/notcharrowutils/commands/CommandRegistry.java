@@ -12,6 +12,7 @@ public class CommandRegistry {
 						.then(AfkOptimize.registerCommand())
 						.then(AutoAttack.registerCommand())
 						.then(AutoFish.registerCommand())
+						.then(AutoSprint.registerCommand())
 						.then(AutoTool.registerCommand())
 						.then(Breadcrumbs.registerCommand())
 						.then(Calculate.registerCommand())

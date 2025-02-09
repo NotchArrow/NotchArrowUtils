@@ -9,10 +9,12 @@ public class NotchArrowUtilsConfig {
 
 	public boolean tickregistryAutoAttack = false;
 
-	public boolean tickregistryAutoTool = false;
-
 	public boolean tickregistryAutoFishMode = false;
 	public boolean tickregistryInstantFishingRecast = false;
+
+	public boolean tickregistryAutoSprint = false;
+
+	public boolean tickregistryAutoTool = false;
 
 	public boolean tickregistryBreadcrumbs = false;
 	public int tickregistryBreadcrumbsMinimumSpacing = 1;

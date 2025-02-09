@@ -34,6 +34,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoFishMode = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Auto Sprint", "Toggles automatic sprinting when moving", ConfigManager.config.tickregistryAutoSprint,
+				newValue -> ConfigManager.config.tickregistryAutoSprint = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Auto Tool", "Toggles automatic tool switching when breaking blocks", ConfigManager.config.tickregistryAutoTool,
 				newValue -> ConfigManager.config.tickregistryAutoTool = (Boolean) newValue,
 				parent);
