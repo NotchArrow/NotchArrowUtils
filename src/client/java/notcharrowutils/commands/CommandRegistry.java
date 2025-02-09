@@ -23,6 +23,7 @@ public class CommandRegistry {
 						.then(FastPlace.registerCommand())
 						.then(Help.registerCommand())
 						.then(InventoryInfo.registerCommand())
+						.then(Jukebox.registerCommand())
 						.then(MyNetherCoords.registerCommand())
 						.then(MyOverworldCoords.registerCommand())
 						.then(NightVision.registerCommand())
