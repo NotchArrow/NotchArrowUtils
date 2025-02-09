@@ -94,6 +94,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		// Tweaks
 		ConfigCategory tweaks = builder.getOrCreateCategory(Text.of("Functionality Tweaks"));
 
+		addConfigEntryBoolean(tweaks, "Auto Attack Passive", "Should Auto Attack target passive mobs (including players)", ConfigManager.config.tickregistryAutoAttackPassive,
+				newValue -> ConfigManager.config.tickregistryAutoAttackPassive = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(tweaks, "Instant Fishing Recast", "Recast your fishing rod instantly instead of after a delay when using autofish", ConfigManager.config.tickregistryInstantFishingRecast,
 				newValue -> ConfigManager.config.tickregistryInstantFishingRecast = (Boolean) newValue,
 				parent);

@@ -8,6 +8,7 @@ public class NotchArrowUtilsConfig {
 
 
 	public boolean tickregistryAutoAttack = false;
+	public boolean tickregistryAutoAttackPassive = false;
 
 	public boolean tickregistryAutoFishMode = false;
 	public boolean tickregistryInstantFishingRecast = false;

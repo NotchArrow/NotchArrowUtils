@@ -3,6 +3,7 @@ package notcharrowutils.ticks;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -16,7 +17,7 @@ public class AutoAttackTickHandler {
 					EntityHitResult hitResult = (EntityHitResult) client.crosshairTarget;
 					Entity target = hitResult.getEntity();
 
-					if (target != null && !target.isRemoved()) {
+					if (target != null && !target.isRemoved() && (target instanceof HostileEntity || ConfigManager.config.tickregistryAutoAttackPassive)) {
 						ClientPlayerEntity player = client.player;
 
 						if (player.getAttackCooldownProgress(1.0f) >= 1.0f) {
