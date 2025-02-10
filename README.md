@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/2222ed88-36b6-4826-8a78-1a820732d880)
+![image](https://github.com/user-attachments/assets/f880eb3a-25aa-4063-97ac-105c323d53c0)
+
 
 A clientside QoL fabric mod for Minecraft 1.20.4
 
