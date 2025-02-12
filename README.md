@@ -3,7 +3,7 @@
 
 A clientside QoL fabric mod for Minecraft 1.20.4
 
-`Modrinth Download will be here`
+[Modrinth Download](https://modrinth.com/mod/notcharrowutils)
 
 # Showcase
 <img alt="image" src="https://github.com/user-attachments/assets/5d49ab29-006b-4e0a-b5b6-087ae68ed5b3" width="640" height="360">
