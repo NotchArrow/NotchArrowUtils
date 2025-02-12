@@ -20,7 +20,6 @@ public class AutoFishTickHandler {
 
 					if (bobber.isTouchingWater() && waterContactTime == -1) {
 						waterContactTime = System.nanoTime();
-						System.out.println(waterContactTime);
 					}
 
 					System.out.println(waterContactTime);
