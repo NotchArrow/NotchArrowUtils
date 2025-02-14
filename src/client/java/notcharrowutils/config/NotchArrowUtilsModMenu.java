@@ -102,10 +102,6 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoAttackPassive = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(tweaks, "Instant Fishing Recast", "Recast your fishing rod instantly instead of after a delay when using autofish", ConfigManager.config.tickregistryInstantFishingRecast,
-				newValue -> ConfigManager.config.tickregistryInstantFishingRecast = (Boolean) newValue,
-				parent);
-
 		addConfigEntryInteger(tweaks, "Breadcrumbs Minimum Spacing", "Minimum space between particles for breadcrumbs", ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing,
 				newValue -> ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing = (Integer) newValue,
 				parent, 0, 16);
