@@ -7,6 +7,7 @@ import com.mojang.brigadier.suggestion.SuggestionProvider;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.SoundManager;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import notcharrowutils.helper.SuggestionBuilder;
@@ -37,7 +38,7 @@ public class Jukebox {
 		String discName = StringArgumentType.getString(context, "disc");
 		SoundManager soundManager = client.getSoundManager();
 
-		SoundEvent soundEvent = switch (discName) {
+		RegistryEntry.Reference<SoundEvent> soundEvent = switch (discName) {
 			case "cat" -> SoundEvents.MUSIC_DISC_CAT;
 			case "wait" -> SoundEvents.MUSIC_DISC_WAIT;
 			case "13" -> SoundEvents.MUSIC_DISC_13;
@@ -60,14 +61,14 @@ public class Jukebox {
 		if (client.player != null) {
 			if (soundEvent != null) {
 				discName = discName.substring(0, 1).toUpperCase() + discName.substring(1);
-				client.player.sendMessage(TextFormat.styledText("Now playing: " + discName));
+				client.player.sendMessage(TextFormat.styledText("Now playing: " + discName), false);
 				soundManager.stopAll();
-				client.player.playSound(soundEvent, Float.MAX_VALUE, 1.0F);
+				client.player.playSound(soundEvent.value(), Float.MAX_VALUE, 1.0F);
 			} else if (discName.equals("stop")) {
-				client.player.sendMessage(TextFormat.styledText("Disc stopped."));
+				client.player.sendMessage(TextFormat.styledText("Disc stopped."), false);
 				soundManager.stopAll();
 			} else {
-				client.player.sendMessage(TextFormat.styledText("Invalid disc."));
+				client.player.sendMessage(TextFormat.styledText("Invalid disc."), false);
 			}
 		}
 

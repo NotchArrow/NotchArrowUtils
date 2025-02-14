@@ -79,7 +79,7 @@ public class EnchantInfo {
 		enchantments.put("unbreaking", "Applies to: Tools, Armor\nMax Level: III\nDescription: Increases the durability of items, reducing the chance of them breaking.");
 
 		String enchantment = StringArgumentType.getString(context, "enchantment");
-		client.player.sendMessage(TextFormat.styledText(enchantments.get(enchantment)));
+		client.player.sendMessage(TextFormat.styledText(enchantments.get(enchantment)), false);
 
 		return 1;
 	}

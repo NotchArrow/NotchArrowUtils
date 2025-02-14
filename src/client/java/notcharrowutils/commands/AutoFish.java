@@ -21,11 +21,11 @@ public class AutoFish {
 		ConfigManager.config.tickregistryAutoFishMode = !ConfigManager.config.tickregistryAutoFishMode;
 		ConfigManager.saveConfig();
 		if (ConfigManager.config.tickregistryAutoFishMode) {
-			client.player.sendMessage(TextFormat.styledText("Auto fish is now enabled."));
-			client.player.sendMessage(TextFormat.styledText("Cast your bobber to start fishing."));
-			client.player.sendMessage(TextFormat.styledText("Auto recast is enabled with a 500ms to 1s delay."));
+			client.player.sendMessage(TextFormat.styledText("Auto fish is now enabled."), false);
+			client.player.sendMessage(TextFormat.styledText("Cast your bobber to start fishing."), false);
+			client.player.sendMessage(TextFormat.styledText("Auto recast is enabled with a 500ms to 1s delay."), false);
 		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto fish is now disabled."));
+			client.player.sendMessage(TextFormat.styledText("Auto fish is now disabled."), false);
 		}
 
 		return 1;

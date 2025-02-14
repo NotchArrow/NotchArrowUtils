@@ -23,7 +23,7 @@ public class AutoToolTickHandler {
 					for (int i = 0; i < 9; i++) {
 						ItemStack stack = client.player.getInventory().getStack(i);
 
-						if (!stack.isEmpty() && stack.getItem().isSuitableFor(block.getDefaultState())) {
+						if (!stack.isEmpty() && stack.isSuitableFor(block.getDefaultState())) {
 							float speed = stack.getMiningSpeedMultiplier(block.getDefaultState());
 							if (speed > bestSpeed) {
 								bestSpeed = speed;

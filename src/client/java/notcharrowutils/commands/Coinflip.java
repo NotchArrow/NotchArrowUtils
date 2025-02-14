@@ -21,9 +21,9 @@ public class Coinflip {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (random.nextDouble() < 0.5) {
-			client.player.sendMessage(TextFormat.styledText("Heads!"));
+			client.player.sendMessage(TextFormat.styledText("Heads!"), false);
 		} else {
-			client.player.sendMessage(TextFormat.styledText("Tails!"));
+			client.player.sendMessage(TextFormat.styledText("Tails!"), false);
 		}
 
 		return 1;

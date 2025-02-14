@@ -17,10 +17,10 @@ public class ExpInfo {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		client.player.sendMessage(TextFormat.styledText("You have " + client.player.totalExperience + " EXP"));
+		client.player.sendMessage(TextFormat.styledText("You have " + client.player.totalExperience + " EXP"), false);
 		double experienceProgressPercent = Math.round(client.player.experienceProgress * 100 * Math.pow(10, 2)) / Math.pow(10, 2);
 		String experienceProgress = "You are " + experienceProgressPercent + "% of the way to level ";
-		client.player.sendMessage(TextFormat.styledText(experienceProgress + (client.player.experienceLevel + 1)));
+		client.player.sendMessage(TextFormat.styledText(experienceProgress + (client.player.experienceLevel + 1)), false);
 
 		return 1;
 	}

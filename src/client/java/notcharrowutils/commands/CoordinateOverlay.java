@@ -20,7 +20,7 @@ public class CoordinateOverlay {
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		ConfigManager.config.tickregistryCoordinateOverlay = !ConfigManager.config.tickregistryCoordinateOverlay;
 		ConfigManager.saveConfig();
-		client.player.sendMessage(TextFormat.styledText("Coordinate overlay toggled."));
+		client.player.sendMessage(TextFormat.styledText("Coordinate overlay toggled."), false);
 
 		return 1;
 	}

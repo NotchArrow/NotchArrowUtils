@@ -23,7 +23,7 @@ public class Help {
 				Text.literal("https://github.com/NotchArrow/notcharrowutils/wiki/Commands")
 						.setStyle(Style.EMPTY.withClickEvent(
 								new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/NotchArrow/notcharrowutils/wiki/Commands")
-						))
+						)), false
 		);
 		return 1;
 	}

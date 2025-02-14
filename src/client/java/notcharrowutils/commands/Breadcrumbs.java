@@ -20,7 +20,7 @@ public class Breadcrumbs {
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		ConfigManager.config.tickregistryBreadcrumbs = !ConfigManager.config.tickregistryBreadcrumbs;
 		ConfigManager.saveConfig();
-		client.player.sendMessage(TextFormat.styledText("Breadcrumbs toggled."));
+		client.player.sendMessage(TextFormat.styledText("Breadcrumbs toggled."), false);
 
 		return 1;
 	}

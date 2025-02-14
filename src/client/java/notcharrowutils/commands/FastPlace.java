@@ -19,7 +19,7 @@ public class FastPlace {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Fast Place toggled."));
+			client.player.sendMessage(TextFormat.styledText("Fast Place toggled."), false);
 		}
 		ConfigManager.config.tickregistryFastPlace = !ConfigManager.config.tickregistryFastPlace;
 

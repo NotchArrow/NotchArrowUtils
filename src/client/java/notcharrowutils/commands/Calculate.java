@@ -31,10 +31,10 @@ public class Calculate {
 			expression.setVariable("S", 1728);
 
 			double result = expression.evaluate();
-			client.player.sendMessage(TextFormat.styledText("Result: " + result));
+			client.player.sendMessage(TextFormat.styledText("Result: " + result), false);
 			return 1;
 		} catch (Exception e) {
-			client.player.sendMessage(TextFormat.styledText("Invalid equation: " + e.getMessage()));
+			client.player.sendMessage(TextFormat.styledText("Invalid equation: " + e.getMessage()), false);
 			return 0;
 		}
 	}

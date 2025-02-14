@@ -29,12 +29,12 @@ public class AfkOptimize {
 			client.options.getEnableVsync().setValue(false);
 			client.options.getMaxFps().setValue(10);
 			client.options.getSoundVolumeOption(SoundCategory.MASTER).setValue(0.0);
-			client.player.sendMessage(TextFormat.styledText("FPS Limited and sound muted. Run the command again to revert."));
+			client.player.sendMessage(TextFormat.styledText("FPS Limited and sound muted. Run the command again to revert."), false);
 		} else {
 			client.options.getEnableVsync().setValue(vSyncDefault);
 			client.options.getMaxFps().setValue(maxFPSDefault);
 			client.options.getSoundVolumeOption(SoundCategory.MASTER).setValue(masterVolumeDefault);
-			client.player.sendMessage(TextFormat.styledText("Settings reverted."));
+			client.player.sendMessage(TextFormat.styledText("Settings reverted."), false);
 		}
 		afkOptimized = !afkOptimized;
 

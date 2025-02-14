@@ -31,7 +31,7 @@ public class DiamondFinder {
 						BlockPos pos = new BlockPos(x, y, z);
 						BlockState blockState = client.world.getBlockState(pos);
 						if (blockState.getBlock().getName().getString().equals("Diamond Ore")) {
-							client.player.sendMessage(TextFormat.styledText(String.format("Diamond at (%d, %d, %d)", pos.getX(), pos.getY(), pos.getZ())));
+							client.player.sendMessage(TextFormat.styledText(String.format("Diamond at (%d, %d, %d)", pos.getX(), pos.getY(), pos.getZ())), false);
 						}
 					}
 				}

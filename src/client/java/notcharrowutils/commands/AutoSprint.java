@@ -19,7 +19,7 @@ public class AutoSprint {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Autosprint toggled."));
+			client.player.sendMessage(TextFormat.styledText("Autosprint toggled."), false);
 		}
 		ConfigManager.config.tickregistryAutoSprint = !ConfigManager.config.tickregistryAutoSprint;
 

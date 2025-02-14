@@ -21,10 +21,10 @@ public class AutoTool {
 		ConfigManager.config.tickregistryAutoTool = !ConfigManager.config.tickregistryAutoTool;
 		ConfigManager.saveConfig();
 		if (ConfigManager.config.tickregistryAutoTool) {
-			client.player.sendMessage(TextFormat.styledText("Auto tool is now enabled."));
-			client.player.sendMessage(TextFormat.styledText("All tools used must be in your hotbar."));
+			client.player.sendMessage(TextFormat.styledText("Auto tool is now enabled."), false);
+			client.player.sendMessage(TextFormat.styledText("All tools used must be in your hotbar."), false);
 		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto tool is now disabled."));
+			client.player.sendMessage(TextFormat.styledText("Auto tool is now disabled."), false);
 		}
 
 		return 1;

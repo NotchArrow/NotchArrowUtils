@@ -19,7 +19,7 @@ public class NoFog {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Fog toggled."));
+			client.player.sendMessage(TextFormat.styledText("Fog toggled."), false);
 		}
 		ConfigManager.config.mixinNoFog = !ConfigManager.config.mixinNoFog;
 

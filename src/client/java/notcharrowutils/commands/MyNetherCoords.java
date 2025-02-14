@@ -26,7 +26,7 @@ public class MyNetherCoords {
 			int netherZ = (int) Math.round(client.player.getZ() / 8);
 
 			String coordinates = String.format("X: %d, Y: %d, Z: %d in the Nether is X: %d Y: %d, Z: %d", x, y, z, netherX, y, netherZ);
-			client.player.sendMessage(TextFormat.styledText(coordinates));
+			client.player.sendMessage(TextFormat.styledText(coordinates), false);
 			return 1;
 		}
 		return 0;

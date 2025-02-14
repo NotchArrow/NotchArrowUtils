@@ -58,8 +58,8 @@ public class InventoryInfo {
 				})
 				.collect(Collectors.joining("\n"));
 
-		client.player.sendMessage(TextFormat.styledText("Inventory Contents:"));
-		client.player.sendMessage(TextFormat.styledText(result));
+		client.player.sendMessage(TextFormat.styledText("Inventory Contents:"), false);
+		client.player.sendMessage(TextFormat.styledText(result), false);
 
 		return 1;
 	}

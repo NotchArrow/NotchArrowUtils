@@ -21,9 +21,9 @@ public class AutoAttack {
 		ConfigManager.config.tickregistryAutoAttack = !ConfigManager.config.tickregistryAutoAttack;
 		ConfigManager.saveConfig();
 		if (ConfigManager.config.tickregistryAutoAttack) {
-			client.player.sendMessage(TextFormat.styledText("Auto attack is now enabled."));
+			client.player.sendMessage(TextFormat.styledText("Auto attack is now enabled."), false);
 		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto attack is now disabled."));
+			client.player.sendMessage(TextFormat.styledText("Auto attack is now disabled."), false);
 		}
 
 		return 1;
