@@ -21,11 +21,11 @@ public class EnchantInfo {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	private static final List<String> enchantmentSuggestions = Arrays.asList("aqua_affinity", "bane_of_arthropods", "blast_protection",
-			"channeling", "curse_of_binding", "curse_of_vanishing", "depth_strider", "efficiency", "feather_falling",
+			"breach", "channeling", "curse_of_binding", "curse_of_vanishing", "density", "depth_strider", "efficiency", "feather_falling",
 			"fire_aspect", "fire_protection", "flame", "fortune", "frost_walker", "impaling", "infinity", "knockback",
 			"loyalty", "looting", "luck_of_the_sea", "lure", "mending", "multishot", "piercing", "power", "projectile_protection",
 			"protection", "punch", "quick_charge", "respiration", "riptide", "sharpness", "silk_touch", "smite", "soul_speed", "swift_sneak",
-			"sweeping_edge", "thorns", "unbreaking");
+			"sweeping_edge", "thorns", "unbreaking", "wind_burst");
 	private static final SuggestionProvider<FabricClientCommandSource> enchantmentSuggestionsProvider = SuggestionBuilder.createSuggestionProvider(enchantmentSuggestions);
 
 	public static LiteralArgumentBuilder<FabricClientCommandSource> registerCommand() {
@@ -41,9 +41,11 @@ public class EnchantInfo {
 		enchantments.put("aqua_affinity", "Applies to: Helmets\nMax Level: I\nDescription: Increases the speed of mining underwater.");
 		enchantments.put("bane_of_arthropods", "Applies to: Swords\nMax Level: V\nDescription: Increases damage against arthropod mobs (spiders, bees, etc.).\nConflicts with: Smite, Sharpness");
 		enchantments.put("blast_protection", "Applies to: Armor\nMax Level: IV\nDescription: Reduces damage taken from explosions.");
+		enchantments.put("breach", "Applies to: Mace\nMax Level: IV\nDescription: Reduces the effectiveness of the armor on the target.\nConflicts with: Density, Sharpness, Smite, Bane of Arthropods");
 		enchantments.put("channeling", "Applies to: Tridents\nMax Level: I\nDescription: Summons a lightning bolt when thrown during a thunderstorm.");
 		enchantments.put("curse_of_binding", "Applies to: Armor\nMax Level: I\nDescription: Causes the item to be bound to the player, preventing removal until the player dies.");
 		enchantments.put("curse_of_vanishing", "Applies to: All items\nMax Level: I\nDescription: Causes the item to disappear upon the player's death.");
+		enchantments.put("density", "Applies to: Mace\nMax Level: V\nDescription: Increases damage dealt per block fallen.\nConflicts with: Breach, Bane of Arthropods, Smite, Sharpness");
 		enchantments.put("depth_strider", "Applies to: Boots\nMax Level: III\nDescription: Increases movement speed while underwater.");
 		enchantments.put("efficiency", "Applies to: Tools\nMax Level: V\nDescription: Allows tools to break blocks faster.");
 		enchantments.put("feather_falling", "Applies to: Boots\nMax Level: IV\nDescription: Reduces fall damage taken when wearing boots.");
@@ -77,6 +79,7 @@ public class EnchantInfo {
 		enchantments.put("sweeping_edge", "Applies to: Swords\nMax Level: III\nDescription: Increases the damage of sweeping attacks with swords.");
 		enchantments.put("thorns", "Applies to: Armor\nMax Level: III\nDescription: Damages attackers when they hit the player.");
 		enchantments.put("unbreaking", "Applies to: Tools, Armor\nMax Level: III\nDescription: Increases the durability of items, reducing the chance of them breaking.");
+		enchantments.put("wind_burst", "Applies to: Mace\nMax Level: III\nDescription: Launches the attacker upwards upon executing a smash attack.");
 
 		String enchantment = StringArgumentType.getString(context, "enchantment");
 		client.player.sendMessage(TextFormat.styledText(enchantments.get(enchantment)), false);

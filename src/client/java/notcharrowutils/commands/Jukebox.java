@@ -23,7 +23,7 @@ public class Jukebox {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	private static final List<String> musicDiscSuggestions = Arrays.asList("cat", "wait", "13", "blocks", "chirp", "far", "mall",
-			"mellohi", "stal", "strad", "ward", "11", "pigstep", "otherside", "relic", "5", "stop");
+			"mellohi", "stal", "strad", "ward", "11", "pigstep", "otherside", "relic", "5", "creator", "creator_music", "precipice", "stop");
 	private static final SuggestionProvider<FabricClientCommandSource> musicDiscSuggestionsProvider = SuggestionBuilder.createSuggestionProvider(musicDiscSuggestions);
 
 
@@ -55,6 +55,9 @@ public class Jukebox {
 			case "otherside" -> SoundEvents.MUSIC_DISC_OTHERSIDE;
 			case "relic" -> SoundEvents.MUSIC_DISC_RELIC;
 			case "5" -> SoundEvents.MUSIC_DISC_5;
+			case "creator" -> SoundEvents.MUSIC_DISC_CREATOR;
+			case "creator_music" -> SoundEvents.MUSIC_DISC_CREATOR_MUSIC_BOX;
+			case "precipice" -> SoundEvents.MUSIC_DISC_PRECIPICE;
 			default -> null;
 		};
 
