@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/f880eb3a-25aa-4063-97ac-105c323d53c0)
 
 
-A clientside QoL fabric mod for Minecraft 1.20.4
+A clientside QoL fabric mod for Minecraft 1.21.4
 
 [Modrinth Download](https://modrinth.com/mod/notcharrowutils)
 
