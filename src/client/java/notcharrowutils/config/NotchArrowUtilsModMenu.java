@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 public class NotchArrowUtilsModMenu implements ModMenuApi {
 	@Override
 	public ConfigScreenFactory<?> getModConfigScreenFactory() {
-		return parent -> createConfigScreen(parent);
+		return this::createConfigScreen;
 	}
 
 	private Screen createConfigScreen(Screen parent) {
@@ -66,6 +66,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.mixinNoFog = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Pickup Notifier", "Toggles pickup notifications", ConfigManager.config.tickregistryPickupNotifier,
+				newValue -> ConfigManager.config.tickregistryPickupNotifier = (Boolean) newValue,
+				parent);
+
 		// Chat
 		ConfigCategory chat = builder.getOrCreateCategory(Text.of("Chat Settings"));
 
@@ -80,8 +84,7 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				.setSaveConsumer(newValue -> {
 					ConfigManager.config.textformatColor = newValue;
 					ConfigManager.saveConfig();
-				})
-				.build());
+				}).build());
 
 		addConfigEntryBoolean(chat, "Bold", "Toggles bolded command feedback in chat", ConfigManager.config.textformatBold,
 				newValue -> ConfigManager.config.textformatBold = (Boolean) newValue,
@@ -117,6 +120,21 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		addConfigEntryBoolean(tweaks, "Floating Fast Place", "Allows midair Fast Place, disabled in multiplayer", ConfigManager.config.tickregistryFloatingFastPlace,
 				newValue -> ConfigManager.config.tickregistryFloatingFastPlace = (Boolean) newValue,
 				parent);
+
+		List<String> pickupNotifierLocations = Arrays.asList("TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT");
+
+		tweaks.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Pickup Notifier Location"), ConfigManager.config.tickregistryPickupNotifierLocation)
+				.setTooltip(Text.of("Changes the location of item pickup notifications"))
+				.setDefaultValue(ConfigManager.config.tickregistryPickupNotifierLocation)
+				.setSelections(pickupNotifierLocations)
+				.setSaveConsumer(newValue -> {
+					ConfigManager.config.tickregistryPickupNotifierLocation = newValue;
+					ConfigManager.saveConfig();
+				}).build());
+
+		addConfigEntryInteger(tweaks, "Pickup Notifier Time", "Amount of time to display item pickups in seconds", ConfigManager.config.tickregistryPickupNotifierTime,
+				newValue -> ConfigManager.config.tickregistryPickupNotifierTime = (Integer) newValue,
+				parent, 1, 30);
 
 
 		return builder.build();

@@ -11,5 +11,6 @@ public class TickRegistry {
 		CoordinateOverlayTickHandler.register();
 		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();
+		PickupNotifierTickHandler.register();
 	}
 }

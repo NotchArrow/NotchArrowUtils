@@ -30,6 +30,10 @@ public class NotchArrowUtilsConfig {
 
 	public boolean tickregistryNightVision = false;
 
+	public boolean tickregistryPickupNotifier = false;
+	public String tickregistryPickupNotifierLocation = "BOTTOM_RIGHT";
+	public int tickregistryPickupNotifierTime = 5;
+
 
 	public boolean mixinNoFog = false;
 }

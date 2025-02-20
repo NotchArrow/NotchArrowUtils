@@ -19,7 +19,6 @@ public class CommandRegistry {
 						.then(Calculate.registerCommand())
 						.then(Coinflip.registerCommand())
 						.then(CoordinateOverlay.registerCommand())
-						.then(DiamondFinder.registerCommand())
 						.then(EnchantInfo.registerCommand())
 						.then(ExpInfo.registerCommand())
 						.then(FastPlace.registerCommand())
@@ -31,6 +30,7 @@ public class CommandRegistry {
 						.then(MyOverworldCoords.registerCommand())
 						.then(NightVision.registerCommand())
 						.then(NoFog.registerCommand())
+						.then(PickupNotifier.registerCommand())
 						.then(RandomDecimal.registerCommand())
 						.then(RandomNumber.registerCommand())
 		);
