@@ -17,6 +17,10 @@ Images taken at 16 render distance, the latter using `/utils nofog` and `/utils 
 
 Simple autocomplete and configuration
 
+![image](https://github.com/user-attachments/assets/b99babf5-0c65-4ddd-b8ab-07d9108a2a97)
+
+Pickup notifications
+
 # Dependencies
 You will need:
 * [Fabric API](https://modrinth.com/mod/fabric-api)
