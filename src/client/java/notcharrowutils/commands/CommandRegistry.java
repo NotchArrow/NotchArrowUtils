@@ -17,6 +17,7 @@ public class CommandRegistry {
 						.then(AutoTool.registerCommand())
 						.then(Breadcrumbs.registerCommand())
 						.then(Calculate.registerCommand())
+						.then(Clock.registerCommand())
 						.then(Coinflip.registerCommand())
 						.then(CoordinateOverlay.registerCommand())
 						.then(EnchantInfo.registerCommand())
