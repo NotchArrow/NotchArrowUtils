@@ -34,3 +34,5 @@ This mod is entirely **clientside** meaning it can be used on any server, but so
 Thank you for using my mod! I'd love to hear any feedback.
 
 <img alt="image" src="https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines">
+
+![image](https://img.shields.io/modrinth/dt/notcharrowutils?style=plastic&logo=modrinth&label=Modrinth&link=https%3A%2F%2Fmodrinth.com%2Fmodpack%2Fnotcharrowutils)
