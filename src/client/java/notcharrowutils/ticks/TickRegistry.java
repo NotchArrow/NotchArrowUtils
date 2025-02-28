@@ -8,6 +8,7 @@ public class TickRegistry {
 		AutoSprintTickHandler.register();
 		AutoToolTickHandler.register();
 		BreadcrumbsTickHandler.register();
+		CameraLockTickHandler.register();
 		CoordinateOverlayTickHandler.register();
 		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();

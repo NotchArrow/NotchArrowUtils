@@ -22,6 +22,8 @@ public class NotchArrowUtilsConfig {
 	public int tickregistryBreadcrumbsMinimumSpacing = 1;
 	public int tickregistryBreadcrumbsViewDistance = 10;
 
+	public boolean tickregistryCameraLock = false;
+
 	public boolean tickregistryCoordinateOverlay = false;
 	public boolean tickregistryColorfulCoordinateOverlay = false;
 

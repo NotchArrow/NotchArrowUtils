@@ -50,6 +50,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryBreadcrumbs = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Camera Lock", "Toggles camera movement (locks the camera position)", ConfigManager.config.tickregistryCameraLock,
+				newValue -> ConfigManager.config.tickregistryCameraLock = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Coordinate Overlay", "Toggles an overlay that displays your coordinates", ConfigManager.config.tickregistryCoordinateOverlay,
 				newValue -> ConfigManager.config.tickregistryCoordinateOverlay = (Boolean) newValue,
 				parent);
