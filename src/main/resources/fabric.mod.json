@@ -15,10 +15,10 @@
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"notcharrowutils.NotchArrowUtils"
+          "com.notcharrow.notcharrowutils.NotchArrowUtils"
 		],
 		"modmenu": [
-			"notcharrowutils.config.NotchArrowUtilsModMenu"
+          "com.notcharrow.notcharrowutils.config.NotchArrowUtilsModMenu"
 		]
 	},
 	"mixins": [
