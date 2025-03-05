@@ -8,7 +8,16 @@
 		"NotchArrow"
 	],
 	"contact": {
-		"homepage": "https://github.com/NotchArrow/notcharrowutils"
+		"homepage": "https://modrinth.com/mod/notcharrowutils",
+		"issues": "https://github.com/NotchArrow/NotchArrowUtils/issues",
+		"sources": "https://github.com/NotchArrow/NotchArrowUtils"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.com/invite/ZCaGkZeb4C"
+			}
+		}
 	},
 	"license": "MIT",
 	"icon": "assets/notcharrowutils/icon.png",
