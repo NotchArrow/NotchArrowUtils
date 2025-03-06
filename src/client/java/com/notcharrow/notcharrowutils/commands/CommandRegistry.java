@@ -17,6 +17,7 @@ public class CommandRegistry {
 						.then(AutoTool.registerCommand())
 						.then(Breadcrumbs.registerCommand())
 						.then(Calculate.registerCommand())
+						.then(CalculatorVariables.registerCommand())
 						.then(CameraLock.registerCommand())
 						.then(Clock.registerCommand())
 						.then(Coinflip.registerCommand())
@@ -35,6 +36,7 @@ public class CommandRegistry {
 						.then(PickupNotifier.registerCommand())
 						.then(RandomDecimal.registerCommand())
 						.then(RandomNumber.registerCommand())
+						.then(StormPause.registerCommand())
 						.then(TravelAngle.registerCommand())
 		);
 	}

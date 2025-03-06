@@ -13,5 +13,6 @@ public class TickRegistry {
 		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();
 		PickupNotifierTickHandler.register();
+		StormPauseTickHandler.register();
 	}
 }

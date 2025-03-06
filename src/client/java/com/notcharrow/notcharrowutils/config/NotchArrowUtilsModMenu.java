@@ -23,7 +23,7 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				.setTitle(Text.of("NotchArrowUtils Configuration"));
 		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-		// General
+		// region General
 		ConfigCategory general = builder.getOrCreateCategory(Text.of("General Settings"));
 
 		addConfigEntryBoolean(general, "Auto Attack", "Toggles automatic attacking when you look at mobs", ConfigManager.config.tickregistryAutoAttack,
@@ -74,7 +74,13 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryPickupNotifier = (Boolean) newValue,
 				parent);
 
-		// Chat
+		addConfigEntryBoolean(general, "Storm Pause", "Pauses active singleplayer world when it starts storming (automatically disabled)", ConfigManager.config.tickregistryStormPause,
+				newValue -> ConfigManager.config.tickregistryStormPause = (Boolean) newValue,
+				parent);
+		// endregion General
+
+
+		// region Chat
 		ConfigCategory chat = builder.getOrCreateCategory(Text.of("Chat Settings"));
 
 		List<String> colorSuggestions = Arrays.asList(
@@ -101,8 +107,55 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		addConfigEntryBoolean(chat, "Underline", "Toggles underlined command feedback in chat", ConfigManager.config.textformatUnderline,
 				newValue -> ConfigManager.config.textformatUnderline = (Boolean) newValue,
 				parent);
+		// endregion Chat
 
-		// Tweaks
+
+		// region Calculator
+		ConfigCategory calculator = builder.getOrCreateCategory(Text.of("Custom Calculator Variables"));
+
+		addConfigEntryString(calculator, "Custom Variable 1 Name", "Name for the custom variable when used in the calculator", ConfigManager.config.calculatorVar1Name,
+				newValue -> ConfigManager.config.calculatorVar1Name = (String) newValue,
+				parent);
+
+		addConfigEntryDouble(calculator, "Custom Variable 1 Value", "Value for the custom variable when used in the calculator", ConfigManager.config.calculatorVar1Value,
+				newValue -> ConfigManager.config.calculatorVar1Value = (Double) newValue,
+				parent);
+
+		addConfigEntryString(calculator, "Custom Variable 2 Name", "Name for the custom variable when used in the calculator", ConfigManager.config.calculatorVar2Name,
+				newValue -> ConfigManager.config.calculatorVar2Name = (String) newValue,
+				parent);
+
+		addConfigEntryDouble(calculator, "Custom Variable 2 Value", "Value for the custom variable when used in the calculator", ConfigManager.config.calculatorVar2Value,
+				newValue -> ConfigManager.config.calculatorVar2Value = (Double) newValue,
+				parent);
+
+		addConfigEntryString(calculator, "Custom Variable 3 Name", "Name for the custom variable when used in the calculator", ConfigManager.config.calculatorVar3Name,
+				newValue -> ConfigManager.config.calculatorVar3Name = (String) newValue,
+				parent);
+
+		addConfigEntryDouble(calculator, "Custom Variable 3 Value", "Value for the custom variable when used in the calculator", ConfigManager.config.calculatorVar3Value,
+				newValue -> ConfigManager.config.calculatorVar3Value = (Double) newValue,
+				parent);
+
+		addConfigEntryString(calculator, "Custom Variable 4 Name", "Name for the custom variable when used in the calculator", ConfigManager.config.calculatorVar4Name,
+				newValue -> ConfigManager.config.calculatorVar4Name = (String) newValue,
+				parent);
+
+		addConfigEntryDouble(calculator, "Custom Variable 4 Value", "Value for the custom variable when used in the calculator", ConfigManager.config.calculatorVar4Value,
+				newValue -> ConfigManager.config.calculatorVar4Value = (Double) newValue,
+				parent);
+
+		addConfigEntryString(calculator, "Custom Variable 5 Name", "Name for the custom variable when used in the calculator", ConfigManager.config.calculatorVar5Name,
+				newValue -> ConfigManager.config.calculatorVar5Name = (String) newValue,
+				parent);
+
+		addConfigEntryDouble(calculator, "Custom Variable 5 Value", "Value for the custom variable when used in the calculator", ConfigManager.config.calculatorVar5Value,
+				newValue -> ConfigManager.config.calculatorVar5Value = (Double) newValue,
+				parent);
+		// endregion Calculator
+
+
+		// region Tweaks
 		ConfigCategory tweaks = builder.getOrCreateCategory(Text.of("Functionality Tweaks"));
 
 		addConfigEntryBoolean(tweaks, "Auto Attack Passive", "Should Auto Attack target passive mobs (including players)", ConfigManager.config.tickregistryAutoAttackPassive,
@@ -139,7 +192,7 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		addConfigEntryInteger(tweaks, "Pickup Notifier Time", "Amount of time to display item pickups in seconds", ConfigManager.config.tickregistryPickupNotifierTime,
 				newValue -> ConfigManager.config.tickregistryPickupNotifierTime = (Integer) newValue,
 				parent, 1, 30);
-
+		// endregion Tweaks
 
 		return builder.build();
 	}
@@ -174,5 +227,37 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 			ConfigManager.saveConfig();
 			})
 			.build());
+	}
+
+	private void addConfigEntryDouble(ConfigCategory category, String label, String tooltip, Object value, Consumer<Object> saveConsumer, Screen parent) {
+		ConfigBuilder builder = ConfigBuilder.create()
+				.setParentScreen(parent)
+				.setTitle(Text.of("NotchArrowUtils Configuration"));
+		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
+
+		category.addEntry(entryBuilder.startDoubleField(Text.of(label), (Double) value)
+				.setTooltip(Text.of(tooltip))
+				.setDefaultValue((Double) value)
+				.setSaveConsumer(newValue -> {
+					saveConsumer.accept(newValue);
+					ConfigManager.saveConfig();
+				})
+				.build());
+	}
+
+	private void addConfigEntryString(ConfigCategory category, String label, String tooltip, Object value, Consumer<Object> saveConsumer, Screen parent) {
+		ConfigBuilder builder = ConfigBuilder.create()
+				.setParentScreen(parent)
+				.setTitle(Text.of("NotchArrowUtils Configuration"));
+		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
+
+		category.addEntry(entryBuilder.startStrField(Text.of(label), (String) value)
+				.setTooltip(Text.of(tooltip))
+				.setDefaultValue((String) value)
+				.setSaveConsumer(newValue -> {
+					saveConsumer.accept(newValue);
+					ConfigManager.saveConfig();
+				})
+				.build());
 	}
 }

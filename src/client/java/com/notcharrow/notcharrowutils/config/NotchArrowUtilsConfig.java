@@ -1,12 +1,27 @@
 package com.notcharrow.notcharrowutils.config;
 
 public class NotchArrowUtilsConfig {
+	// Chat Colors and Formatting
 	public String textformatColor = "DARK_AQUA";
 	public boolean textformatBold = false;
 	public boolean textformatItalic = false;
 	public boolean textformatUnderline = false;
 
 
+	// Calculator Command
+	public String calculatorVar1Name = "inv";
+	public double calculatorVar1Value = 2304;
+	public String calculatorVar2Name = "var2";
+	public double calculatorVar2Value = 0;
+	public String calculatorVar3Name = "var3";
+	public double calculatorVar3Value = 0;
+	public String calculatorVar4Name = "var4";
+	public double calculatorVar4Value = 0;
+	public String calculatorVar5Name = "var5";
+	public double calculatorVar5Value = 0;
+
+
+	// Tickevents
 	public boolean tickregistryAutoAttack = false;
 	public boolean tickregistryAutoAttackPassive = false;
 
@@ -36,6 +51,9 @@ public class NotchArrowUtilsConfig {
 	public String tickregistryPickupNotifierLocation = "BOTTOM_RIGHT";
 	public int tickregistryPickupNotifierTime = 5;
 
+	public boolean tickregistryStormPause = false;
 
+
+	// Mixins
 	public boolean mixinNoFog = false;
 }
