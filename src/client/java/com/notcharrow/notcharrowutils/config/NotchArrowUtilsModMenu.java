@@ -30,12 +30,20 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoAttack = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(general, "Auto Fish", "Toggles automatic fishing", ConfigManager.config.tickregistryAutoFishMode,
-				newValue -> ConfigManager.config.tickregistryAutoFishMode = (Boolean) newValue,
+		addConfigEntryBoolean(general, "Auto Fish", "Toggles automatic fishing", ConfigManager.config.tickregistryAutoFish,
+				newValue -> ConfigManager.config.tickregistryAutoFish = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(general, "Auto Refill", "Toggles automatic hotbar refill when running out of an item (can flag anticheat)", ConfigManager.config.tickregistryAutoRefill,
+				newValue -> ConfigManager.config.tickregistryAutoRefill = (Boolean) newValue,
 				parent);
 
 		addConfigEntryBoolean(general, "Auto Replant", "Toggles automatic replanting by right clicking while holding seeds", ConfigManager.config.tickregistryAutoReplant,
 				newValue -> ConfigManager.config.tickregistryAutoReplant = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(general, "Auto Rocket", "Automatic firework rocket usage with elytra", ConfigManager.config.tickregistryAutoRocket,
+				newValue -> ConfigManager.config.tickregistryAutoRocket = (Boolean) newValue,
 				parent);
 
 		addConfigEntryBoolean(general, "Auto Sprint", "Toggles automatic sprinting when moving", ConfigManager.config.tickregistryAutoSprint,
@@ -72,6 +80,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 
 		addConfigEntryBoolean(general, "Pickup Notifier", "Toggles pickup notifications", ConfigManager.config.tickregistryPickupNotifier,
 				newValue -> ConfigManager.config.tickregistryPickupNotifier = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(general, "Singleplayer Statistics", "Displays session stats for your current world on the pause screen (requires world rejoin)", ConfigManager.config.mixinStatistics,
+				newValue -> ConfigManager.config.mixinStatistics = (Boolean) newValue,
 				parent);
 
 		addConfigEntryBoolean(general, "Storm Pause", "Pauses active singleplayer world when it starts storming (automatically disabled)", ConfigManager.config.tickregistryStormPause,
@@ -155,12 +167,45 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		// endregion Calculator
 
 
+		// region AutoRocket
+		ConfigCategory autoRocket = builder.getOrCreateCategory(Text.of("Auto Rocket"));
+
+		addConfigEntryBoolean(autoRocket, "Auto Rocket Safe Landing", "Should Auto Rocket attempt to land at low Elytra durability", ConfigManager.config.tickRegistryAutoRocketSafeLanding,
+				newValue -> ConfigManager.config.tickRegistryAutoRocketSafeLanding = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(autoRocket, "Auto Rocket Safe Landing Disconnect", "Should the client disconnect from the server after landing safely", ConfigManager.config.tickregistryAutoRocketDisconnectOnSafeLanding,
+				newValue -> ConfigManager.config.tickregistryAutoRocketDisconnectOnSafeLanding = (Boolean) newValue,
+				parent);
+
+		addConfigEntryInteger(autoRocket, "Auto Rocket Minimum Delay", "Minimum time in seconds between rocket uses", ConfigManager.config.tickregistryAutoRocketMinDelay,
+				newValue -> ConfigManager.config.tickregistryAutoRocketMinDelay = (Integer) newValue,
+				parent, 1, 30);
+
+		addConfigEntryInteger(autoRocket, "Auto Rocket Minimum Y Level", "Y level to stay above while using rockets (200+ recommended)", ConfigManager.config.tickregistryAutoRocketMinY,
+				newValue -> ConfigManager.config.tickregistryAutoRocketMinY = (Integer) newValue,
+				parent, 60, 400);
+		// endregion AutoRocket
+
+
 		// region Tweaks
 		ConfigCategory tweaks = builder.getOrCreateCategory(Text.of("Functionality Tweaks"));
 
-		addConfigEntryBoolean(tweaks, "Auto Attack Passive", "Should Auto Attack target passive mobs (including players)", ConfigManager.config.tickregistryAutoAttackPassive,
+		addConfigEntryBoolean(tweaks, "Auto Attack Passive", "Should Auto Attack target passive mobs (not including villagers)", ConfigManager.config.tickregistryAutoAttackPassive,
 				newValue -> ConfigManager.config.tickregistryAutoAttackPassive = (Boolean) newValue,
 				parent);
+
+		addConfigEntryBoolean(tweaks, "Auto Attack Players", "Should Auto Attack target players", ConfigManager.config.tickregistryAutoAttackPlayer,
+				newValue -> ConfigManager.config.tickregistryAutoAttackPlayer = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(tweaks, "Auto Tool From Inventory", "Should Auto Tool pull tools from your inventory (can flag anticheat)", ConfigManager.config.tickregistryAutoToolFromInventory,
+				newValue -> ConfigManager.config.tickregistryAutoToolFromInventory = (Boolean) newValue,
+				parent);
+
+		addConfigEntryInteger(tweaks, "Auto Tool Slot", "Slot to put tools into if pulling from inventory", ConfigManager.config.tickregistryAutoToolSlot,
+				newValue -> ConfigManager.config.tickregistryAutoToolSlot = (Integer) newValue,
+				parent, 1, 9);
 
 		addConfigEntryInteger(tweaks, "Breadcrumbs Minimum Spacing", "Minimum space between particles for breadcrumbs", ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing,
 				newValue -> ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing = (Integer) newValue,

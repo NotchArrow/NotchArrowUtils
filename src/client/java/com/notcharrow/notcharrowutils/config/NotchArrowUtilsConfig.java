@@ -24,14 +24,25 @@ public class NotchArrowUtilsConfig {
 	// Tickevents
 	public boolean tickregistryAutoAttack = false;
 	public boolean tickregistryAutoAttackPassive = false;
+	public boolean tickregistryAutoAttackPlayer = false;
 
-	public boolean tickregistryAutoFishMode = false;
+	public boolean tickregistryAutoFish = false;
+
+	public boolean tickregistryAutoRefill = false;
 
 	public boolean tickregistryAutoReplant = false;
+
+	public boolean tickregistryAutoRocket = false;
+	public int tickregistryAutoRocketMinDelay = 10;
+	public int tickregistryAutoRocketMinY = 200;
+	public boolean tickRegistryAutoRocketSafeLanding = false;
+	public boolean tickregistryAutoRocketDisconnectOnSafeLanding = true;
 
 	public boolean tickregistryAutoSprint = false;
 
 	public boolean tickregistryAutoTool = false;
+	public boolean tickregistryAutoToolFromInventory = false;
+	public int tickregistryAutoToolSlot = 9;
 
 	public boolean tickregistryBreadcrumbs = false;
 	public int tickregistryBreadcrumbsMinimumSpacing = 1;
@@ -56,4 +67,5 @@ public class NotchArrowUtilsConfig {
 
 	// Mixins
 	public boolean mixinNoFog = false;
+	public boolean mixinStatistics = false;
 }

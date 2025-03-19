@@ -22,6 +22,7 @@ public class AutoSprint {
 			client.player.sendMessage(TextFormat.styledText("Autosprint toggled."), false);
 		}
 		ConfigManager.config.tickregistryAutoSprint = !ConfigManager.config.tickregistryAutoSprint;
+		ConfigManager.saveConfig();
 
 		return 1;
 	}

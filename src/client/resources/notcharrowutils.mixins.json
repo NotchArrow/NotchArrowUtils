@@ -7,6 +7,7 @@
     "NoFogMixin"
   ],
   "client": [
-    "NoFogMixin"
+    "NoFogMixin",
+    "StatisticsMixin",
   ]
 }

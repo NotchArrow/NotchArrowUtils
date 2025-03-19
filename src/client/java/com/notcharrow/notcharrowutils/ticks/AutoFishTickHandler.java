@@ -1,19 +1,16 @@
 package com.notcharrow.notcharrowutils.ticks;
 
+import com.notcharrow.notcharrowutils.config.ConfigManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.util.Hand;
-import com.notcharrow.notcharrowutils.config.ConfigManager;
-
-import java.util.Random;
 
 public class AutoFishTickHandler {
-	static Random random = new Random();
 	static long waterContactTime = -1;
 
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (ConfigManager.config.tickregistryAutoFishMode && client.player != null) {
+			if (ConfigManager.config.tickregistryAutoFish && client.player != null) {
 				FishingBobberEntity bobber = client.player.fishHook;
 
 				if (bobber != null) {

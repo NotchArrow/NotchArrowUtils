@@ -22,6 +22,7 @@ public class FastPlace {
 			client.player.sendMessage(TextFormat.styledText("Fast Place toggled."), false);
 		}
 		ConfigManager.config.tickregistryFastPlace = !ConfigManager.config.tickregistryFastPlace;
+		ConfigManager.saveConfig();
 
 		return 1;
 	}

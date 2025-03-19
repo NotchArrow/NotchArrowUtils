@@ -1,5 +1,7 @@
 package com.notcharrow.notcharrowutils;
 
+import com.notcharrow.notcharrowutils.keybinds.KeybindRegistry;
+import com.notcharrow.notcharrowutils.keybinds.KeybindTickHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import com.notcharrow.notcharrowutils.commands.CommandRegistry;
@@ -17,6 +19,10 @@ public class NotchArrowUtils implements ClientModInitializer {
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
 			CommandRegistry.registerCommands(dispatcher);
 		});
+
+		// Register All Keybinds
+		KeybindRegistry.registerKeybinds();
+		KeybindTickHandler.register();
 
 		// Register All TickEvents
 		TickRegistry.registerTicks();

@@ -22,6 +22,7 @@ public class NoFog {
 			client.player.sendMessage(TextFormat.styledText("Fog toggled."), false);
 		}
 		ConfigManager.config.mixinNoFog = !ConfigManager.config.mixinNoFog;
+		ConfigManager.saveConfig();
 
 		return 1;
 	}

@@ -22,6 +22,7 @@ public class NightVision {
 			client.player.sendMessage(TextFormat.styledText("Nightvision toggled."), false);
 		}
 		ConfigManager.config.tickregistryNightVision = !ConfigManager.config.tickregistryNightVision;
+		ConfigManager.saveConfig();
 
 		return 1;
 	}

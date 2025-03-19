@@ -9,19 +9,24 @@ import com.notcharrow.notcharrowutils.helper.TextFormat;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
-public class AutoReplant {
+public class AutoRocket {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	public static LiteralArgumentBuilder<FabricClientCommandSource> registerCommand() {
-		return literal("autoreplant")
-				.executes(AutoReplant::execute);
+		return literal("autorocket")
+				.executes(AutoRocket::execute);
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Auto Replant toggled."), false);
+			if (!ConfigManager.config.tickregistryAutoRocket) {
+				client.player.sendMessage(TextFormat.styledText("AutoRocket enabled."), false);
+				client.player.sendMessage(TextFormat.styledText("Start flying with an Elytra while holding fireworks."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("AutoRocket disabled."), false);
+			}
 		}
-		ConfigManager.config.tickregistryAutoReplant = !ConfigManager.config.tickregistryAutoReplant;
+		ConfigManager.config.tickregistryAutoRocket = !ConfigManager.config.tickregistryAutoRocket;
 		ConfigManager.saveConfig();
 
 		return 1;

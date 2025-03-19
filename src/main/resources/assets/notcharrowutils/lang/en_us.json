@@ -1,0 +1,13 @@
+{
+  "category.notcharrowutils": "NotchArrow Utils",
+  "key.notcharrowutils.autoAttackKeybind": "Auto Attack",
+  "key.notcharrowutils.autoFishKeybind": "Auto Fish",
+  "key.notcharrowutils.autoRefillKeybind": "Auto Refill",
+  "key.notcharrowutils.autoRocketKeybind": "Auto Rocket",
+  "key.notcharrowutils.autoSprintKeybind": "Auto Sprint",
+  "key.notcharrowutils.autoToolKeybind": "Auto Tool",
+  "key.notcharrowutils.breadcrumbsKeybind": "Breadcrumbs",
+  "key.notcharrowutils.fastPlaceKeybind": "Fast Place",
+  "key.notcharrowutils.nightVisionKeybind": "Nightvision",
+  "key.notcharrowutils.noFogKeybind": "No Fog"
+}

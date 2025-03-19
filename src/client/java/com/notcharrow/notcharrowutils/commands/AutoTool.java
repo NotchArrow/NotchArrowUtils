@@ -20,11 +20,18 @@ public class AutoTool {
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		ConfigManager.config.tickregistryAutoTool = !ConfigManager.config.tickregistryAutoTool;
 		ConfigManager.saveConfig();
-		if (ConfigManager.config.tickregistryAutoTool) {
-			client.player.sendMessage(TextFormat.styledText("Auto tool is now enabled."), false);
-			client.player.sendMessage(TextFormat.styledText("All tools used must be in your hotbar."), false);
-		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto tool is now disabled."), false);
+		if (client.player != null) {
+			if (ConfigManager.config.tickregistryAutoTool) {
+				client.player.sendMessage(TextFormat.styledText("Auto tool is now enabled."), false);
+				if (!ConfigManager.config.tickregistryAutoToolFromInventory) {
+					client.player.sendMessage(TextFormat.styledText("All tools used must be in your hotbar."), false);
+				} else {
+					client.player.sendMessage(TextFormat.styledText("Tools will be pulled from your inventory into slot " +
+							ConfigManager.config.tickregistryAutoToolSlot + "."), false);
+				}
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Auto tool is now disabled."), false);
+			}
 		}
 
 		return 1;

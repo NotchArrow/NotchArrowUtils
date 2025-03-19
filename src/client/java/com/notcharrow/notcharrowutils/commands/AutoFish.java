@@ -18,14 +18,16 @@ public class AutoFish {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		ConfigManager.config.tickregistryAutoFishMode = !ConfigManager.config.tickregistryAutoFishMode;
+		ConfigManager.config.tickregistryAutoFish = !ConfigManager.config.tickregistryAutoFish;
 		ConfigManager.saveConfig();
-		if (ConfigManager.config.tickregistryAutoFishMode) {
-			client.player.sendMessage(TextFormat.styledText("Auto fish is now enabled."), false);
-			client.player.sendMessage(TextFormat.styledText("Cast your bobber to start fishing."), false);
-			client.player.sendMessage(TextFormat.styledText("Auto recast is enabled with a 500ms to 1s delay."), false);
-		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto fish is now disabled."), false);
+		if (client.player != null) {
+			if (ConfigManager.config.tickregistryAutoFish) {
+				client.player.sendMessage(TextFormat.styledText("Auto fish is now enabled."), false);
+				client.player.sendMessage(TextFormat.styledText("Cast your bobber to start fishing."), false);
+				client.player.sendMessage(TextFormat.styledText("Auto recast is enabled with a 500ms to 1s delay."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Auto fish is now disabled."), false);
+			}
 		}
 
 		return 1;

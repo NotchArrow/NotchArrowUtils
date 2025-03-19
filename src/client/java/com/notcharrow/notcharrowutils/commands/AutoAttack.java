@@ -20,10 +20,12 @@ public class AutoAttack {
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		ConfigManager.config.tickregistryAutoAttack = !ConfigManager.config.tickregistryAutoAttack;
 		ConfigManager.saveConfig();
-		if (ConfigManager.config.tickregistryAutoAttack) {
-			client.player.sendMessage(TextFormat.styledText("Auto attack is now enabled."), false);
-		} else {
-			client.player.sendMessage(TextFormat.styledText("Auto attack is now disabled."), false);
+		if (client.player != null) {
+			if (ConfigManager.config.tickregistryAutoAttack) {
+				client.player.sendMessage(TextFormat.styledText("Auto attack is now enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Auto attack is now disabled."), false);
+			}
 		}
 
 		return 1;

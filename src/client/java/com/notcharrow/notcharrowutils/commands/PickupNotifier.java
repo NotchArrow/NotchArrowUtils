@@ -22,6 +22,7 @@ public class PickupNotifier {
 			client.player.sendMessage(TextFormat.styledText("Pickup Notifier toggled."), false);
 		}
 		ConfigManager.config.tickregistryPickupNotifier = !ConfigManager.config.tickregistryPickupNotifier;
+		ConfigManager.saveConfig();
 
 		return 1;
 	}
