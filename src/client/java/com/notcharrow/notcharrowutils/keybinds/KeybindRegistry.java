@@ -15,6 +15,7 @@ public class KeybindRegistry {
 	public static KeyBinding fastPlaceKeybind;
 	public static KeyBinding nightVisionKeybind;
 	public static KeyBinding noFogKeybind;
+	public static KeyBinding zoomKeybind;
 
 	public static void registerKeybinds() {
 		autoAttackKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -64,6 +65,11 @@ public class KeybindRegistry {
 
 		noFogKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.notcharrowutils.noFogKeybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils"));
+
+		zoomKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.zoomKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 	}

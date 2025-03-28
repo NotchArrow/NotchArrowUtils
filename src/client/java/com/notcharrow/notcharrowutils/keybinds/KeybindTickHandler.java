@@ -9,34 +9,44 @@ public class KeybindTickHandler {
 			if (KeybindRegistry.autoAttackKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoAttack = !ConfigManager.config.tickregistryAutoAttack;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.autoFishKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.autoFishKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoFish = !ConfigManager.config.tickregistryAutoFish;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.autoRefillKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.autoRefillKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoRefill = !ConfigManager.config.tickregistryAutoRefill;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.autoRocketKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.autoRocketKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoRocket = !ConfigManager.config.tickregistryAutoRocket;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.autoSprintKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.autoSprintKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoSprint = !ConfigManager.config.tickregistryAutoSprint;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.autoToolKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.autoToolKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryAutoTool = !ConfigManager.config.tickregistryAutoTool;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.breadcrumbsKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.breadcrumbsKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryBreadcrumbs = !ConfigManager.config.tickregistryBreadcrumbs;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.fastPlaceKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.fastPlaceKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryFastPlace = !ConfigManager.config.tickregistryFastPlace;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.nightVisionKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.nightVisionKeybind.wasPressed()) {
 				ConfigManager.config.tickregistryNightVision = !ConfigManager.config.tickregistryNightVision;
 				ConfigManager.saveConfig();
-			} else if (KeybindRegistry.noFogKeybind.wasPressed()) {
+			}
+			if (KeybindRegistry.noFogKeybind.wasPressed()) {
 				ConfigManager.config.mixinNoFog = !ConfigManager.config.mixinNoFog;
 				ConfigManager.saveConfig();
 			}
 		});
+		ZoomKeybind.register();
 	}
 }
