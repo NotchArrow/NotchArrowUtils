@@ -19,7 +19,11 @@ public class AutoReplant {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Auto Replant toggled."), false);
+			if (!ConfigManager.config.tickregistryAutoReplant) {
+				client.player.sendMessage(TextFormat.styledText("Auto Replant enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Auto Replant disabled."), false);
+			}
 		}
 		ConfigManager.config.tickregistryAutoReplant = !ConfigManager.config.tickregistryAutoReplant;
 		ConfigManager.saveConfig();

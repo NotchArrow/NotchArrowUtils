@@ -19,7 +19,11 @@ public class NightVision {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Nightvision toggled."), false);
+			if (!ConfigManager.config.tickregistryNightVision) {
+				client.player.sendMessage(TextFormat.styledText("Nightvision enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Nightvision disabled."), false);
+			}
 		}
 		ConfigManager.config.tickregistryNightVision = !ConfigManager.config.tickregistryNightVision;
 		ConfigManager.saveConfig();

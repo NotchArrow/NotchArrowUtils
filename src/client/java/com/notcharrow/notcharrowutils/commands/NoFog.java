@@ -19,7 +19,11 @@ public class NoFog {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Fog toggled."), false);
+			if (!ConfigManager.config.mixinNoFog) {
+				client.player.sendMessage(TextFormat.styledText("No fog enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("No fog disabled."), false);
+			}
 		}
 		ConfigManager.config.mixinNoFog = !ConfigManager.config.mixinNoFog;
 		ConfigManager.saveConfig();

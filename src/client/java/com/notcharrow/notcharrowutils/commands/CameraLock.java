@@ -19,7 +19,11 @@ public class CameraLock {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Camera movement toggled."), false);
+			if (!ConfigManager.config.tickregistryCameraLock) {
+				client.player.sendMessage(TextFormat.styledText("Camera movement disabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Camera movement enabled."), false);
+			}
 		}
 		ConfigManager.config.tickregistryCameraLock = !ConfigManager.config.tickregistryCameraLock;
 

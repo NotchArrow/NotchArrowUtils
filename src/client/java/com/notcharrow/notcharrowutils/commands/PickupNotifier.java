@@ -19,7 +19,11 @@ public class PickupNotifier {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			client.player.sendMessage(TextFormat.styledText("Pickup Notifier toggled."), false);
+			if (!ConfigManager.config.tickregistryPickupNotifier) {
+				client.player.sendMessage(TextFormat.styledText("Pickup Notifier enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Pickup Notifier disabled."), false);
+			}
 		}
 		ConfigManager.config.tickregistryPickupNotifier = !ConfigManager.config.tickregistryPickupNotifier;
 		ConfigManager.saveConfig();

@@ -62,7 +62,11 @@ public class AutoRocketTickHandler {
 				&& safeLanding && ConfigManager.config.tickregistryAutoRocketDisconnectOnSafeLanding) {
 				if (client.player.isOnGround()) {
 					safeLanding = false;
-					client.world.disconnect();
+					if (client.isInSingleplayer()) {
+						client.openGameMenu(true);
+					} else {
+						client.world.disconnect();
+					}
 				}
 			}
 		});

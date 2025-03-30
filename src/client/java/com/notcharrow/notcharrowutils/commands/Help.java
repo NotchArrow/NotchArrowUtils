@@ -19,12 +19,15 @@ public class Help {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
-		client.player.sendMessage(
-				Text.literal("https://github.com/NotchArrow/notcharrowutils/wiki/Commands")
-						.setStyle(Style.EMPTY.withClickEvent(
-								new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/NotchArrow/notcharrowutils/wiki/Commands")
-						)), false
-		);
+		if (client.player != null) {
+			client.player.sendMessage(
+					Text.literal("https://modrinth.com/mod/notcharrowutils")
+							.setStyle(Style.EMPTY.withClickEvent(
+									new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/mod/notcharrowutils")
+							)), false
+			);
+		}
+
 		return 1;
 	}
 }

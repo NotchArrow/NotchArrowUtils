@@ -82,6 +82,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryPickupNotifier = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Projectile Trail", "Toggles projectile trails", ConfigManager.config.tickregistryProjectileTrail,
+				newValue -> ConfigManager.config.tickregistryProjectileTrail = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Singleplayer Statistics", "Displays session stats for your current world on the pause screen (requires world rejoin)", ConfigManager.config.mixinStatistics,
 				newValue -> ConfigManager.config.mixinStatistics = (Boolean) newValue,
 				parent);
@@ -108,16 +112,41 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 					ConfigManager.saveConfig();
 				}).build());
 
-		addConfigEntryBoolean(chat, "Bold", "Toggles bolded command feedback in chat", ConfigManager.config.textformatBold,
+		addConfigEntryBoolean(chat, "Bold Chat", "Toggles bolded command feedback in chat", ConfigManager.config.textformatBold,
 				newValue -> ConfigManager.config.textformatBold = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(chat, "Italic", "Toggles italicized command feedback in chat", ConfigManager.config.textformatItalic,
+		addConfigEntryBoolean(chat, "Italic Chat", "Toggles italicized command feedback in chat", ConfigManager.config.textformatItalic,
 				newValue -> ConfigManager.config.textformatItalic = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(chat, "Underline", "Toggles underlined command feedback in chat", ConfigManager.config.textformatUnderline,
+		addConfigEntryBoolean(chat, "Underline Chat", "Toggles underlined command feedback in chat", ConfigManager.config.textformatUnderline,
 				newValue -> ConfigManager.config.textformatUnderline = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(chat, "Mod Chat Prefix", "Toggles mod prefix in chat", ConfigManager.config.textformatPrefix,
+				newValue -> ConfigManager.config.textformatPrefix = (Boolean) newValue,
+				parent);
+
+		chat.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Prefix Color"), ConfigManager.config.textformatColorPrefix)
+				.setTooltip(Text.of("Changes the mod prefix color"))
+				.setDefaultValue(ConfigManager.config.textformatColorPrefix)
+				.setSelections(colorSuggestions)
+				.setSaveConsumer(newValue -> {
+					ConfigManager.config.textformatColorPrefix = newValue;
+					ConfigManager.saveConfig();
+				}).build());
+
+		addConfigEntryBoolean(chat, "Bold Prefix", "Toggles bolded mod prefix in chat", ConfigManager.config.textformatBoldPrefix,
+				newValue -> ConfigManager.config.textformatBoldPrefix = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(chat, "Italic Prefix", "Toggles italicized mod prefix in chat", ConfigManager.config.textformatItalicPrefix,
+				newValue -> ConfigManager.config.textformatItalicPrefix = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(chat, "Underline Prefix", "Toggles underlined mod prefix in chat", ConfigManager.config.textformatUnderlinePrefix,
+				newValue -> ConfigManager.config.textformatUnderlinePrefix = (Boolean) newValue,
 				parent);
 		// endregion Chat
 
@@ -237,6 +266,14 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		addConfigEntryInteger(tweaks, "Pickup Notifier Time", "Amount of time to display item pickups in seconds", ConfigManager.config.tickregistryPickupNotifierTime,
 				newValue -> ConfigManager.config.tickregistryPickupNotifierTime = (Integer) newValue,
 				parent, 1, 30);
+
+		addConfigEntryInteger(tweaks, "Projectile Trail View Distance", "Maximum distance away that projectile trail particles render", ConfigManager.config.tickregistryProjectileTrailDistance,
+				newValue -> ConfigManager.config.tickregistryProjectileTrailDistance = (Integer) newValue,
+				parent, 0, 128);
+
+		addConfigEntryInteger(tweaks, "Zoom Sensitivity Adjustment", "Changes your sensitivity to x% of your default sensitivity while zooming", ConfigManager.config.mixinZoomSensitivityFactor,
+				newValue -> ConfigManager.config.mixinZoomSensitivityFactor = (Integer) newValue,
+				parent, 10, 100);
 		// endregion Tweaks
 
 		return builder.build();

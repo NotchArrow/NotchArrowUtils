@@ -1,5 +1,6 @@
 package com.notcharrow.notcharrowutils.keybinds;
 
+import com.notcharrow.notcharrowutils.config.ConfigManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 public class ZoomKeybind {
@@ -18,7 +19,7 @@ public class ZoomKeybind {
 
 				client.options.smoothCameraEnabled = true;
 				client.options.getFov().setValue(30);
-				client.options.getMouseSensitivity().setValue(originalSensitivity * 0.5);
+				client.options.getMouseSensitivity().setValue(originalSensitivity * (ConfigManager.config.mixinZoomSensitivityFactor * 0.01));
 			} else if (zooming) {
 				zooming = false;
 				client.options.smoothCameraEnabled = false;

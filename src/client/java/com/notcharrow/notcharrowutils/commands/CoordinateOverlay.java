@@ -18,9 +18,15 @@ public class CoordinateOverlay {
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
+		if (client.player != null) {
+			if (!ConfigManager.config.tickregistryCoordinateOverlay) {
+				client.player.sendMessage(TextFormat.styledText("Coordinate overlay enabled."), false);
+			} else {
+				client.player.sendMessage(TextFormat.styledText("Coordinate overlay disabled."), false);
+			}
+		}
 		ConfigManager.config.tickregistryCoordinateOverlay = !ConfigManager.config.tickregistryCoordinateOverlay;
 		ConfigManager.saveConfig();
-		client.player.sendMessage(TextFormat.styledText("Coordinate overlay toggled."), false);
 
 		return 1;
 	}

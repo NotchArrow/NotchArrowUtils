@@ -6,6 +6,11 @@ public class NotchArrowUtilsConfig {
 	public boolean textformatBold = false;
 	public boolean textformatItalic = false;
 	public boolean textformatUnderline = false;
+	public boolean textformatPrefix = true;
+	public String textformatColorPrefix = "DARK_BLUE";
+	public boolean textformatBoldPrefix = true;
+	public boolean textformatItalicPrefix = false;
+	public boolean textformatUnderlinePrefix = false;
 
 
 	// Calculator Command
@@ -62,10 +67,14 @@ public class NotchArrowUtilsConfig {
 	public String tickregistryPickupNotifierLocation = "BOTTOM_RIGHT";
 	public int tickregistryPickupNotifierTime = 5;
 
+	public boolean tickregistryProjectileTrail = false;
+	public int tickregistryProjectileTrailDistance = 64;
+
 	public boolean tickregistryStormPause = false;
 
 
 	// Mixins
 	public boolean mixinNoFog = false;
 	public boolean mixinStatistics = false;
+	public int mixinZoomSensitivityFactor = 50;
 }

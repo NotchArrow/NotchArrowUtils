@@ -9,23 +9,23 @@ import com.notcharrow.notcharrowutils.helper.TextFormat;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
-public class FastPlace {
+public class ProjectileTrail {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	public static LiteralArgumentBuilder<FabricClientCommandSource> registerCommand() {
-		return literal("fastplace")
-				.executes(FastPlace::execute);
+		return literal("projectiletrail")
+				.executes(ProjectileTrail::execute);
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			if (!ConfigManager.config.tickregistryFastPlace) {
-				client.player.sendMessage(TextFormat.styledText("Fast Place enabled."), false);
+			if (!ConfigManager.config.tickregistryProjectileTrail) {
+				client.player.sendMessage(TextFormat.styledText("Projectile Trails enabled."), false);
 			} else {
-				client.player.sendMessage(TextFormat.styledText("Fast Place disabled."), false);
+				client.player.sendMessage(TextFormat.styledText("Projectile Trails disabled."), false);
 			}
 		}
-		ConfigManager.config.tickregistryFastPlace = !ConfigManager.config.tickregistryFastPlace;
+		ConfigManager.config.tickregistryProjectileTrail = !ConfigManager.config.tickregistryProjectileTrail;
 		ConfigManager.saveConfig();
 
 		return 1;
