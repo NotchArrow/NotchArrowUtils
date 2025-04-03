@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/f880eb3a-25aa-4063-97ac-105c323d53c0)
 
 
-A clientside QoL fabric mod for Minecraft 1.21.4
+A clientside QoL fabric mod for Minecraft
 
 [Modrinth Download](https://modrinth.com/mod/notcharrowutils)
 
@@ -35,3 +35,4 @@ Thank you for using my mod! I'd love to hear any feedback.
 
 ![image](https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines)
 ![image](https://img.shields.io/modrinth/dt/notcharrowutils?style=plastic&logo=modrinth&label=Modrinth&link=https%3A%2F%2Fmodrinth.com%2Fmodpack%2Fnotcharrowutils)
+[![CodeFactor](https://www.codefactor.io/repository/github/notcharrow/notcharrowutils/badge)](https://www.codefactor.io/repository/github/notcharrow/notcharrowutils)
