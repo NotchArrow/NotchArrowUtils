@@ -31,6 +31,8 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryAutoAttackPassive = false;
 	public boolean tickregistryAutoAttackPlayer = false;
 
+	public boolean tickregistryAutoChestplate = false;
+
 	public boolean tickregistryAutoFish = false;
 
 	public boolean tickregistryAutoRefill = false;

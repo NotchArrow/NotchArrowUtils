@@ -11,6 +11,7 @@ public class CommandRegistry {
 				literal("utils")
 						.then(AfkOptimize.registerCommand())
 						.then(AutoAttack.registerCommand())
+						.then(AutoChestplate.registerCommand())
 						.then(AutoFish.registerCommand())
 						.then(AutoRefill.registerCommand())
 						.then(AutoReplant.registerCommand())

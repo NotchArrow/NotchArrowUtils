@@ -12,6 +12,7 @@ public class KeybindRegistry {
 	public static KeyBinding autoSprintKeybind;
 	public static KeyBinding autoToolKeybind;
 	public static KeyBinding breadcrumbsKeybind;
+	public static KeyBinding elytraKeybind;
 	public static KeyBinding fastPlaceKeybind;
 	public static KeyBinding nightVisionKeybind;
 	public static KeyBinding noFogKeybind;
@@ -50,6 +51,11 @@ public class KeybindRegistry {
 
 		breadcrumbsKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.notcharrowutils.breadcrumbsKeybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils"));
+
+		elytraKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.elytraKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 

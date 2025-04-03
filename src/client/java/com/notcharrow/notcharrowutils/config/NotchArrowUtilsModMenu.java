@@ -30,6 +30,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoAttack = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Auto Chestplate", "Toggles automatic chestplate equipping when taking damage (swaps with elytra, can flag anticheat)", ConfigManager.config.tickregistryAutoChestplate,
+				newValue -> ConfigManager.config.tickregistryAutoChestplate = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Auto Fish", "Toggles automatic fishing", ConfigManager.config.tickregistryAutoFish,
 				newValue -> ConfigManager.config.tickregistryAutoFish = (Boolean) newValue,
 				parent);
