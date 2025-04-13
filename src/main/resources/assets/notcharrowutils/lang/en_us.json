@@ -7,8 +7,9 @@
   "key.notcharrowutils.autoSprintKeybind": "Auto Sprint",
   "key.notcharrowutils.autoToolKeybind": "Auto Tool",
   "key.notcharrowutils.breadcrumbsKeybind": "Breadcrumbs",
-  "key.notcharrowutils.elytraKeybind": "Elytra Swap",
   "key.notcharrowutils.fastPlaceKeybind": "Fast Place",
+  "key.notcharrowutils.hotbarCycleDownKeybind": "Cycle Hotbar Down",
+  "key.notcharrowutils.hotbarCycleUpKeybind": "Cycle Hotbar Up",
   "key.notcharrowutils.nightVisionKeybind": "Nightvision",
   "key.notcharrowutils.noFogKeybind": "No Fog",
   "key.notcharrowutils.zoomKeybind": "Zoom"

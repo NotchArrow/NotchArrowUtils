@@ -30,8 +30,8 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoAttack = (Boolean) newValue,
 				parent);
 
-		addConfigEntryBoolean(general, "Auto Chestplate", "Toggles automatic chestplate equipping when taking damage (swaps with elytra, can flag anticheat)", ConfigManager.config.tickregistryAutoChestplate,
-				newValue -> ConfigManager.config.tickregistryAutoChestplate = (Boolean) newValue,
+		addConfigEntryBoolean(general, "Auto Elytra", "Automatically swaps to your elytra when double jumping, swapping back to chestplate when landing", ConfigManager.config.tickregistryAutoElytra,
+				newValue -> ConfigManager.config.tickregistryAutoElytra = (Boolean) newValue,
 				parent);
 
 		addConfigEntryBoolean(general, "Auto Fish", "Toggles automatic fishing", ConfigManager.config.tickregistryAutoFish,
@@ -219,6 +219,47 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoRocketMinY = (Integer) newValue,
 				parent, 60, 400);
 		// endregion AutoRocket
+
+
+		// region HotbarCycling
+		ConfigCategory hotbarCycling = builder.getOrCreateCategory(Text.of("Hotbar Cycling"));
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 1", "Lock column 1 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot1,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot1 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 2", "Lock column 2 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot2,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot2 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 3", "Lock column 3 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot3,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot3 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 4", "Lock column 4 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot4,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot4 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 5", "Lock column 5 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot5,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot5 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 6", "Lock column 6 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot6,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot6 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 7", "Lock column 7 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot7,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot7 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 8", "Lock column 8 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot8,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot8 = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(hotbarCycling, "Lock Slot 9", "Lock column 9 of the inventory from cycling", ConfigManager.config.hotbarCyclingLockSlot9,
+				newValue -> ConfigManager.config.hotbarCyclingLockSlot9 = (Boolean) newValue,
+				parent);
+		// endregion HotbarCycling
 
 
 		// region Tweaks

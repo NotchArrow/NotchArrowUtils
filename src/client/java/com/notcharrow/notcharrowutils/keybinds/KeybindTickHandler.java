@@ -47,7 +47,7 @@ public class KeybindTickHandler {
 				ConfigManager.saveConfig();
 			}
 		});
-		ElytraKeybind.register();
+		HotbarCycleKeybinds.register();
 		ZoomKeybind.register();
 	}
 }

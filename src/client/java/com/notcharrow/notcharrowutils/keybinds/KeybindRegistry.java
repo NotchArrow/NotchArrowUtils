@@ -12,8 +12,9 @@ public class KeybindRegistry {
 	public static KeyBinding autoSprintKeybind;
 	public static KeyBinding autoToolKeybind;
 	public static KeyBinding breadcrumbsKeybind;
-	public static KeyBinding elytraKeybind;
 	public static KeyBinding fastPlaceKeybind;
+	public static KeyBinding hotbarCycleDownKeybind;
+	public static KeyBinding hotbarCycleUpKeybind;
 	public static KeyBinding nightVisionKeybind;
 	public static KeyBinding noFogKeybind;
 	public static KeyBinding zoomKeybind;
@@ -54,13 +55,18 @@ public class KeybindRegistry {
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 
-		elytraKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.notcharrowutils.elytraKeybind",
+		fastPlaceKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.fastPlaceKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 
-		fastPlaceKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.notcharrowutils.fastPlaceKeybind",
+		hotbarCycleUpKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbarCycleUpKeybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils"));
+
+		hotbarCycleDownKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbarCycleDownKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 

@@ -3,7 +3,7 @@ package com.notcharrow.notcharrowutils.ticks;
 public class TickRegistry {
 	public static void registerTicks() {
 		AutoAttackTickHandler.register();
-		AutoChestplateTickHandler.register();
+		AutoElytraTickHandler.register();
 		AutoFishTickHandler.register();
 		AutoRefillTickHandler.register();
 		AutoReplantTickHandler.register();

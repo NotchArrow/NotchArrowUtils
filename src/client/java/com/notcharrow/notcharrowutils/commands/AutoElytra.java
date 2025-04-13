@@ -9,23 +9,23 @@ import com.notcharrow.notcharrowutils.helper.TextFormat;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
-public class AutoChestplate {
+public class AutoElytra {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 
 	public static LiteralArgumentBuilder<FabricClientCommandSource> registerCommand() {
-		return literal("autochestplate")
-				.executes(AutoChestplate::execute);
+		return literal("autoelytra")
+				.executes(AutoElytra::execute);
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			if (!ConfigManager.config.tickregistryAutoChestplate) {
-				client.player.sendMessage(TextFormat.styledText("AutoChestplate enabled."), false);
+			if (!ConfigManager.config.tickregistryAutoElytra) {
+				client.player.sendMessage(TextFormat.styledText("AutoElytra enabled."), false);
 			} else {
-				client.player.sendMessage(TextFormat.styledText("AutoChestplate disabled."), false);
+				client.player.sendMessage(TextFormat.styledText("AutoElytra disabled."), false);
 			}
 		}
-		ConfigManager.config.tickregistryAutoChestplate = !ConfigManager.config.tickregistryAutoChestplate;
+		ConfigManager.config.tickregistryAutoElytra = !ConfigManager.config.tickregistryAutoElytra;
 		ConfigManager.saveConfig();
 
 		return 1;

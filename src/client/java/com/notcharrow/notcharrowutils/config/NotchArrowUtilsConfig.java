@@ -25,13 +25,23 @@ public class NotchArrowUtilsConfig {
 	public String calculatorVar5Name = "var5";
 	public double calculatorVar5Value = 0;
 
+	// HotbarCycling
+	public boolean hotbarCyclingLockSlot1 = false;
+	public boolean hotbarCyclingLockSlot2 = false;
+	public boolean hotbarCyclingLockSlot3 = false;
+	public boolean hotbarCyclingLockSlot4 = false;
+	public boolean hotbarCyclingLockSlot5 = false;
+	public boolean hotbarCyclingLockSlot6 = false;
+	public boolean hotbarCyclingLockSlot7 = false;
+	public boolean hotbarCyclingLockSlot8 = false;
+	public boolean hotbarCyclingLockSlot9 = false;
 
 	// Tickevents
 	public boolean tickregistryAutoAttack = false;
 	public boolean tickregistryAutoAttackPassive = false;
 	public boolean tickregistryAutoAttackPlayer = false;
 
-	public boolean tickregistryAutoChestplate = false;
+	public boolean tickregistryAutoElytra = false;
 
 	public boolean tickregistryAutoFish = false;
 

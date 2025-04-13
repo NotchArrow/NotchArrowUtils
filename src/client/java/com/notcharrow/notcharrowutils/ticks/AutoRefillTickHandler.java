@@ -9,7 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.screen.slot.SlotActionType;
 
 public class AutoRefillTickHandler {
-	private static Item previousHeld = Items.AIR;
+	public static Item previousHeld = Items.AIR;
 	private static int previousSlot = -1;
 
 	public static void register() {
