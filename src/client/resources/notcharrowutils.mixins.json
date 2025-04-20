@@ -7,6 +7,8 @@
     "NoFogMixin"
   ],
   "client": [
+    "BookEditScreenAccessor",
+    "ConstantMusicMixin",
     "NoFogMixin",
     "StatisticsMixin"
   ]

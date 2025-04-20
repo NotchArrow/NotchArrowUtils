@@ -12,5 +12,16 @@
   "key.notcharrowutils.hotbarCycleUpKeybind": "Cycle Hotbar Up",
   "key.notcharrowutils.nightVisionKeybind": "Nightvision",
   "key.notcharrowutils.noFogKeybind": "No Fog",
-  "key.notcharrowutils.zoomKeybind": "Zoom"
+  "key.notcharrowutils.zoomKeybind": "Zoom",
+
+  "category.notcharrowutils.hotbar": "Secondary Hotbar Keybinds",
+  "key.notcharrowutils.hotbar.hotbarSlot1Keybind": "Hotbar Slot 1 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot2Keybind": "Hotbar Slot 2 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot3Keybind": "Hotbar Slot 3 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot4Keybind": "Hotbar Slot 4 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot5Keybind": "Hotbar Slot 5 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot6Keybind": "Hotbar Slot 6 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot7Keybind": "Hotbar Slot 7 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot8Keybind": "Hotbar Slot 8 Secondary",
+  "key.notcharrowutils.hotbar.hotbarSlot9Keybind": "Hotbar Slot 9 Secondary"
 }

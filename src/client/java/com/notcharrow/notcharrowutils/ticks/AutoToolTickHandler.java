@@ -10,6 +10,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 
 public class AutoToolTickHandler {
+	private static int oldSlot = 0;
+	private static boolean switchBack = false;
+
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player != null && client.crosshairTarget != null
@@ -20,6 +23,11 @@ public class AutoToolTickHandler {
 						&& client.interactionManager.isBreakingBlock()) {
 					BlockHitResult blockHit = (BlockHitResult) client.crosshairTarget;
 					Block block = client.world.getBlockState(blockHit.getBlockPos()).getBlock();
+
+					if (ConfigManager.config.tickregistryAutoToolSwitchBack && !switchBack) {
+						oldSlot = client.player.getInventory().selectedSlot;
+						switchBack = true;
+					}
 
 					int currentSlot = client.player.getInventory().selectedSlot;
 					int bestSlot = -1;
@@ -51,6 +59,10 @@ public class AutoToolTickHandler {
 							client.player.getInventory().selectedSlot = ConfigManager.config.tickregistryAutoToolSlot - 1;
 						}
 					}
+				}
+				if (switchBack && !client.options.attackKey.isPressed()) {
+					client.player.getInventory().selectedSlot = oldSlot;
+					switchBack = false;
 				}
 			}
 		});

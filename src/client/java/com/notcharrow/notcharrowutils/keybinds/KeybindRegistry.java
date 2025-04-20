@@ -19,6 +19,18 @@ public class KeybindRegistry {
 	public static KeyBinding noFogKeybind;
 	public static KeyBinding zoomKeybind;
 
+	// region Secondary Hotbar Keybinds
+	public static KeyBinding hotbarSlot1Keybind;
+	public static KeyBinding hotbarSlot2Keybind;
+	public static KeyBinding hotbarSlot3Keybind;
+	public static KeyBinding hotbarSlot4Keybind;
+	public static KeyBinding hotbarSlot5Keybind;
+	public static KeyBinding hotbarSlot6Keybind;
+	public static KeyBinding hotbarSlot7Keybind;
+	public static KeyBinding hotbarSlot8Keybind;
+	public static KeyBinding hotbarSlot9Keybind;
+	// endregion Secondary Hotbar Keybinds
+
 	public static void registerKeybinds() {
 		autoAttackKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.notcharrowutils.autoAttackKeybind",
@@ -84,5 +96,52 @@ public class KeybindRegistry {
 				"key.notcharrowutils.zoomKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
+
+		// region Secondary Hotbar Keybinds
+		hotbarSlot1Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot1Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot2Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot2Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot3Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot3Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot4Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot4Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot5Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot5Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot6Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot6Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot7Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot7Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot8Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot8Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+
+		hotbarSlot9Keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.hotbar.hotbarSlot9Keybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils.hotbar"));
+		// endregion Secondary Hotbar Keybinds
 	}
 }

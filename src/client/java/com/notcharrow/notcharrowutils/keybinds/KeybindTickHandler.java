@@ -48,6 +48,7 @@ public class KeybindTickHandler {
 			}
 		});
 		HotbarCycleKeybinds.register();
+		SecondaryHotbarKeybinds.register();
 		ZoomKeybind.register();
 	}
 }

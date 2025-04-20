@@ -66,6 +66,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryCameraLock = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(general, "Constant Music", "Removes pauses in Minecraft music", ConfigManager.config.mixinConstantMusic,
+				newValue -> ConfigManager.config.mixinConstantMusic = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(general, "Coordinate Overlay", "Toggles an overlay that displays your coordinates", ConfigManager.config.tickregistryCoordinateOverlay,
 				newValue -> ConfigManager.config.tickregistryCoordinateOverlay = (Boolean) newValue,
 				parent);
@@ -280,6 +284,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		addConfigEntryInteger(tweaks, "Auto Tool Slot", "Slot to put tools into if pulling from inventory", ConfigManager.config.tickregistryAutoToolSlot,
 				newValue -> ConfigManager.config.tickregistryAutoToolSlot = (Integer) newValue,
 				parent, 1, 9);
+
+		addConfigEntryBoolean(tweaks, "Auto Tool Switch Back", "Should Auto Tool switch back to the original slot after you finish mining", ConfigManager.config.tickregistryAutoToolSwitchBack,
+				newValue -> ConfigManager.config.tickregistryAutoToolSwitchBack = (Boolean) newValue,
+				parent);
 
 		addConfigEntryInteger(tweaks, "Breadcrumbs Minimum Spacing", "Minimum space between particles for breadcrumbs", ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing,
 				newValue -> ConfigManager.config.tickregistryBreadcrumbsMinimumSpacing = (Integer) newValue,

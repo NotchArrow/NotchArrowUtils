@@ -60,6 +60,7 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryAutoTool = false;
 	public boolean tickregistryAutoToolFromInventory = false;
 	public int tickregistryAutoToolSlot = 9;
+	public boolean tickregistryAutoToolSwitchBack = true;
 
 	public boolean tickregistryBreadcrumbs = false;
 	public int tickregistryBreadcrumbsMinimumSpacing = 1;
@@ -86,6 +87,7 @@ public class NotchArrowUtilsConfig {
 
 
 	// Mixins
+	public boolean mixinConstantMusic = false;
 	public boolean mixinNoFog = false;
 	public boolean mixinStatistics = false;
 	public int mixinZoomSensitivityFactor = 50;
