@@ -27,6 +27,7 @@ public class CommandRegistry {
 						.then(ConstantMusic.registerCommand())
 						.then(CoordinateOverlay.registerCommand())
 						.then(DeathLocation.registerCommand())
+						.then(DurabilityWarnings.registerCommand())
 						.then(EnchantInfo.registerCommand())
 						.then(ExpInfo.registerCommand())
 						.then(FastPlace.registerCommand())
