@@ -1,14 +1,15 @@
 package com.notcharrow.notcharrowutils.ticks;
 
+import com.notcharrow.notcharrowutils.config.ConfigManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import com.notcharrow.notcharrowutils.config.ConfigManager;
-import org.joml.Matrix4f;
+import net.minecraft.util.Identifier;
 
 import java.util.*;
 
@@ -16,6 +17,7 @@ public class PickupNotifierTickHandler {
 	private static final Map<String, Integer> pickupDisplay = new HashMap<>();
 	private static final Map<String, Integer> pickupTimers = new HashMap<>();
 	private static final Map<String, Integer> previousCounts = new HashMap<>();
+	private static final Identifier EXAMPLE_LAYER = Identifier.of("com.notcharrow.notcharrowutils", "pickupnotifier");
 
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -88,65 +90,58 @@ public class PickupNotifierTickHandler {
 				}
 			}
 		});
+			HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, EXAMPLE_LAYER, PickupNotifierTickHandler::render));
+	}
 
-		HudRenderCallback.EVENT.register((matrices, tickDelta) -> {
-			MinecraftClient client = MinecraftClient.getInstance();
-			if (client.player == null || pickupDisplay.isEmpty()) return;
+	private static void render(DrawContext context, RenderTickCounter tickCounter) {
+		MinecraftClient client = MinecraftClient.getInstance();
+		if (client.player == null || pickupDisplay.isEmpty()) return;
 
-			TextRenderer textRenderer = client.textRenderer;
-			VertexConsumerProvider.Immediate vertexConsumers = client.getBufferBuilders().getEffectVertexConsumers();
-			Matrix4f matrix = matrices.getMatrices().peek().getPositionMatrix();
+		TextRenderer textRenderer = client.textRenderer;
 
-			int y;
-			int yIncrement;
-			List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(pickupDisplay.entrySet());
-			if (Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_LEFT")
-			|| Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_RIGHT")) {
-				y = 20;
-				yIncrement = 10;
-				sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
-						.thenComparing(e -> e.getKey().toLowerCase()));
+		int y;
+		int yIncrement;
+		List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(pickupDisplay.entrySet());
+		if (Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_LEFT")
+				|| Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_RIGHT")) {
+			y = 20;
+			yIncrement = 10;
+			sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
+					.thenComparing(e -> e.getKey().toLowerCase()));
+		} else {
+			y = client.getWindow().getScaledHeight() - 20;
+			yIncrement = -10;
+			sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
+					.thenComparing(e -> e.getKey().toLowerCase()).reversed());
+		}
+
+		for (Map.Entry<String, Integer> entry : sortedEntries) {
+			String itemName = entry.getKey();
+			int count = entry.getValue();
+
+			String displayText;
+			int color;
+			if (count > 0) {
+				displayText = "+ " + itemName + " x" + count;
+				color = 0x55FF55;
+			} else if (count < 0) {
+				displayText = "- " + itemName + " x" + Math.abs(count);
+				color = 0xFF5555;
 			} else {
-				y = client.getWindow().getScaledHeight() - 20;
-				yIncrement = -10;
-				sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
-						.thenComparing(e -> e.getKey().toLowerCase()).reversed());
+				continue;
 			}
 
-			for (Map.Entry<String, Integer> entry : sortedEntries) {
-				String itemName = entry.getKey();
-				int count = entry.getValue();
-
-				String displayText;
-				int color;
-				if (count > 0) {
-					displayText = "+ " + itemName + " x" + count;
-					color = 0x55FF55;
-				} else if (count < 0) {
-					displayText = "- " + itemName + " x" + Math.abs(count);
-					color = 0xFF5555;
-				} else {
-					continue;
-				}
-
-				int x;
-				if (ConfigManager.config.tickregistryPickupNotifierLocation.equals("TOP_RIGHT")
-				|| ConfigManager.config.tickregistryPickupNotifierLocation.equals("BOTTOM_RIGHT")) {
-					int textWidth = textRenderer.getWidth(displayText);
-					x = client.getWindow().getScaledWidth() - textWidth - 10;
-				} else {
-					x = 10;
-				}
-
-				textRenderer.draw(
-						Text.literal(displayText),
-						x, y, color, true,
-						matrix, vertexConsumers,
-						TextRenderer.TextLayerType.NORMAL, 0, 15728880
-				);
-				y += yIncrement;
+			int x;
+			if (ConfigManager.config.tickregistryPickupNotifierLocation.equals("TOP_RIGHT")
+					|| ConfigManager.config.tickregistryPickupNotifierLocation.equals("BOTTOM_RIGHT")) {
+				int textWidth = textRenderer.getWidth(displayText);
+				x = client.getWindow().getScaledWidth() - textWidth - 10;
+			} else {
+				x = 10;
 			}
-			vertexConsumers.draw();
-		});
+
+			context.drawText(client.textRenderer, displayText, x, y, color, true);
+			y += yIncrement;
+		}
 	}
 }

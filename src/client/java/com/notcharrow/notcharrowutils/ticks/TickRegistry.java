@@ -13,6 +13,7 @@ public class TickRegistry {
 		BreadcrumbsTickHandler.register();
 		CameraLockTickHandler.register();
 		CoordinateOverlayTickHandler.register();
+		DurabilityWarningTickHandler.register();
 		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();
 		PickupNotifierTickHandler.register();

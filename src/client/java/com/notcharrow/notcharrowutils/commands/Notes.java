@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import com.notcharrow.notcharrowutils.helper.TextFormat;
 import com.notcharrow.notcharrowutils.mixin.BookEditScreenAccessor;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -45,32 +46,37 @@ public class Notes {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
+			if (client.player.getInventory().getMainHandStack().getItem() == Items.WRITABLE_BOOK) {
+				client.player.sendMessage(TextFormat.styledText("Cannot open notes while holding a book."), false);
+			}
 			openBook = true;
 			ClientTickEvents.END_CLIENT_TICK.register(client -> {
-				if (openBook) {
-					openBook = false;
-					currentBookContent = new WritableBookContentComponent(savedPages);
-					client.setScreen(new BookEditScreen(
-							client.player,
-							new ItemStack(Items.WRITABLE_BOOK),
-							Hand.MAIN_HAND,
-							currentBookContent
-					));
-				}
-
-				if (client.currentScreen instanceof BookEditScreen) {
-					lastBookScreen = (BookEditScreen) client.currentScreen;
-				} else if (lastBookScreen != null) {
-					BookEditScreenAccessor accessor = (BookEditScreenAccessor) lastBookScreen;
-					List<String> editedPages = accessor.getPages();
-
-					savedPages.clear();
-					for (String page : editedPages) {
-						savedPages.add(RawFilteredPair.of(page));
+				if (client.player != null && client.player.getInventory().getMainHandStack().getItem() != Items.WRITABLE_BOOK) {
+					if (openBook) {
+						openBook = false;
+						currentBookContent = new WritableBookContentComponent(savedPages);
+						client.setScreen(new BookEditScreen(
+								client.player,
+								new ItemStack(Items.WRITABLE_BOOK),
+								Hand.MAIN_HAND,
+								currentBookContent
+						));
 					}
 
-					saveNotesToFile();
-					lastBookScreen = null;
+					if (client.currentScreen instanceof BookEditScreen) {
+						lastBookScreen = (BookEditScreen) client.currentScreen;
+					} else if (lastBookScreen != null) {
+						BookEditScreenAccessor accessor = (BookEditScreenAccessor) lastBookScreen;
+						List<String> editedPages = accessor.getPages();
+
+						savedPages.clear();
+						for (String page : editedPages) {
+							savedPages.add(RawFilteredPair.of(page));
+						}
+
+						saveNotesToFile();
+						lastBookScreen = null;
+					}
 				}
 			});
 		}

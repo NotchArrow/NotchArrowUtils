@@ -71,6 +71,10 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryCoordinateOverlay = false;
 	public boolean tickregistryColorfulCoordinateOverlay = false;
 
+	public boolean tickregistryDurabilityWarnings = false;
+	public int tickregistryDurabilityWarningsPercentage = 10;
+	public int tickregistryDurabilityWarningsTime = 180;
+
 	public boolean tickregistryFastPlace = false;
 	public boolean tickregistryFloatingFastPlace = false;
 
