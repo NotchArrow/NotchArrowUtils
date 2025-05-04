@@ -8,7 +8,6 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-import java.util.*;
 import java.util.function.Consumer;
 
 public class NotchArrowUtilsModMenu implements ModMenuApi {
@@ -111,18 +110,17 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		// region Chat
 		ConfigCategory chat = builder.getOrCreateCategory(Text.of("Chat Settings"));
 
-		List<String> colorSuggestions = Arrays.asList(
-			"BLACK", "DARK_BLUE", "DARK_GREEN", "DARK_AQUA", "DARK_RED", "DARK_PURPLE", "GOLD", "GRAY",
-			"DARK_GRAY", "BLUE", "GREEN", "AQUA", "RED", "LIGHT_PURPLE", "YELLOW", "WHITE");
-
-		chat.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Chat Color"), ConfigManager.config.textformatColor)
+		chat.addEntry(entryBuilder.startEnumSelector(
+						Text.of("Chat Color"),
+						NotchArrowUtilsConfig.ChatColors.class,
+						ConfigManager.config.textformatColor)
 				.setTooltip(Text.of("Changes the command feedback chat color"))
 				.setDefaultValue(ConfigManager.config.textformatColor)
-				.setSelections(colorSuggestions)
 				.setSaveConsumer(newValue -> {
 					ConfigManager.config.textformatColor = newValue;
 					ConfigManager.saveConfig();
-				}).build());
+				})
+				.build());
 
 		addConfigEntryBoolean(chat, "Bold Chat", "Toggles bolded command feedback in chat", ConfigManager.config.textformatBold,
 				newValue -> ConfigManager.config.textformatBold = (Boolean) newValue,
@@ -140,14 +138,17 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.textformatPrefix = (Boolean) newValue,
 				parent);
 
-		chat.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Prefix Color"), ConfigManager.config.textformatColorPrefix)
+		chat.addEntry(entryBuilder.startEnumSelector(
+						Text.of("Prefix Color"),
+						NotchArrowUtilsConfig.ChatColors.class,
+						ConfigManager.config.textformatColorPrefix)
 				.setTooltip(Text.of("Changes the mod prefix color"))
 				.setDefaultValue(ConfigManager.config.textformatColorPrefix)
-				.setSelections(colorSuggestions)
 				.setSaveConsumer(newValue -> {
 					ConfigManager.config.textformatColorPrefix = newValue;
 					ConfigManager.saveConfig();
-				}).build());
+				})
+				.build());
 
 		addConfigEntryBoolean(chat, "Bold Prefix", "Toggles bolded mod prefix in chat", ConfigManager.config.textformatBoldPrefix,
 				newValue -> ConfigManager.config.textformatBoldPrefix = (Boolean) newValue,
@@ -270,6 +271,71 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		// endregion HotbarCycling
 
 
+		// region Overlay
+		ConfigCategory overlay = builder.getOrCreateCategory(Text.of("Overlay HUD"));
+
+		addConfigEntryBoolean(overlay, "Overlay HUD", "The main toggle for the overlay in the top left", ConfigManager.config.tickregistryOverlay,
+				newValue -> ConfigManager.config.tickregistryOverlay = (Boolean) newValue,
+				parent);
+
+		addConfigEntryFloat(overlay, "Overlay Scale", "Scale of the entire overlay", ConfigManager.config.tickregistryOverlayScale,
+				newValue -> ConfigManager.config.tickregistryOverlayScale = (float) newValue,
+				parent);
+
+		overlay.addEntry(entryBuilder.startEnumSelector(
+						Text.of("Overlay Location"),
+						NotchArrowUtilsConfig.OverlayLocation.class,
+						ConfigManager.config.tickregistryOverlayLocation)
+				.setTooltip(Text.of("Changes the location of the info overlay"))
+				.setDefaultValue(ConfigManager.config.tickregistryOverlayLocation)
+				.setSaveConsumer(newValue -> {
+					ConfigManager.config.tickregistryOverlayLocation = newValue;
+					ConfigManager.saveConfig();
+				})
+				.build());
+
+		addConfigEntryBoolean(overlay, "Overlay Text Shadow", "Should the overlay text have a shadow behind it", ConfigManager.config.tickregistryOverlayTextShadow,
+				newValue -> ConfigManager.config.tickregistryOverlayTextShadow = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Coordinates", "Should the overlay display coordinates", ConfigManager.config.tickregistryOverlayCoordinates,
+				newValue -> ConfigManager.config.tickregistryOverlayCoordinates = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display FPS", "Should the overlay display FPS", ConfigManager.config.tickregistryOverlayFPS,
+				newValue -> ConfigManager.config.tickregistryOverlayFPS = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Ping", "Should the overlay display ping", ConfigManager.config.tickregistryOverlayPing,
+				newValue -> ConfigManager.config.tickregistryOverlayPing = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Speed", "Should the overlay display speed", ConfigManager.config.tickregistryOverlaySpeed,
+				newValue -> ConfigManager.config.tickregistryOverlaySpeed = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Direction", "Should the overlay display the direction you're facing", ConfigManager.config.tickregistryOverlayFacing,
+				newValue -> ConfigManager.config.tickregistryOverlayFacing = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Day", "Should the overlay display the current ingame day", ConfigManager.config.tickregistryOverlayDay,
+				newValue -> ConfigManager.config.tickregistryOverlayDay = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Time", "Should the overlay display the current ingame time", ConfigManager.config.tickregistryOverlayTime,
+				newValue -> ConfigManager.config.tickregistryOverlayTime = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Biome", "Should the overlay display the current biome", ConfigManager.config.tickregistryOverlayBiome,
+				newValue -> ConfigManager.config.tickregistryOverlayBiome = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(overlay, "Display Targeted Block", "Should the overlay display the targeted block", ConfigManager.config.tickregistryOverlayTargetedBlock,
+				newValue -> ConfigManager.config.tickregistryOverlayTargetedBlock = (Boolean) newValue,
+				parent);
+		// endregion Overlay
+
+
 		// region Tweaks
 		ConfigCategory tweaks = builder.getOrCreateCategory(Text.of("Functionality Tweaks"));
 
@@ -317,16 +383,17 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryFloatingFastPlace = (Boolean) newValue,
 				parent);
 
-		List<String> pickupNotifierLocations = Arrays.asList("TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT");
-
-		tweaks.addEntry(entryBuilder.startStringDropdownMenu(Text.of("Pickup Notifier Location"), ConfigManager.config.tickregistryPickupNotifierLocation)
+		tweaks.addEntry(entryBuilder.startEnumSelector(
+						Text.of("Pickup Notifier Location"),
+						NotchArrowUtilsConfig.PickupNotifierLocation.class,
+						ConfigManager.config.tickregistryPickupNotifierLocation)
 				.setTooltip(Text.of("Changes the location of item pickup notifications"))
 				.setDefaultValue(ConfigManager.config.tickregistryPickupNotifierLocation)
-				.setSelections(pickupNotifierLocations)
 				.setSaveConsumer(newValue -> {
 					ConfigManager.config.tickregistryPickupNotifierLocation = newValue;
 					ConfigManager.saveConfig();
-				}).build());
+				})
+				.build());
 
 		addConfigEntryInteger(tweaks, "Pickup Notifier Time", "Amount of time to display item pickups in seconds", ConfigManager.config.tickregistryPickupNotifierTime,
 				newValue -> ConfigManager.config.tickregistryPickupNotifierTime = (Integer) newValue,
@@ -385,6 +452,21 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 		category.addEntry(entryBuilder.startDoubleField(Text.of(label), (Double) value)
 				.setTooltip(Text.of(tooltip))
 				.setDefaultValue((Double) value)
+				.setSaveConsumer(newValue -> {
+					saveConsumer.accept(newValue);
+					ConfigManager.saveConfig();
+				})
+				.build());
+	}
+
+	private void addConfigEntryFloat(ConfigCategory category, String label, String tooltip, Float value, Consumer<Object> saveConsumer, Screen parent) {
+		ConfigBuilder builder = ConfigBuilder.create()
+				.setParentScreen(parent)
+				.setTitle(Text.of("NotchArrowUtils Configuration"));
+		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
+
+		category.addEntry(entryBuilder.startFloatField(Text.of(label),value)
+				.setTooltip(Text.of(tooltip))
 				.setSaveConsumer(newValue -> {
 					saveConsumer.accept(newValue);
 					ConfigManager.saveConfig();

@@ -17,6 +17,7 @@ public class KeybindRegistry {
 	public static KeyBinding hotbarCycleUpKeybind;
 	public static KeyBinding nightVisionKeybind;
 	public static KeyBinding noFogKeybind;
+	public static KeyBinding worldIconKeybind;
 	public static KeyBinding zoomKeybind;
 
 	// region Secondary Hotbar Keybinds
@@ -89,6 +90,11 @@ public class KeybindRegistry {
 
 		noFogKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.notcharrowutils.noFogKeybind",
+				InputUtil.UNKNOWN_KEY.getCode(),
+				"category.notcharrowutils"));
+
+		worldIconKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+				"key.notcharrowutils.worldIconKeybind",
 				InputUtil.UNKNOWN_KEY.getCode(),
 				"category.notcharrowutils"));
 

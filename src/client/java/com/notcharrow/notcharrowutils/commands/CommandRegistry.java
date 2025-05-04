@@ -40,6 +40,7 @@ public class CommandRegistry {
 						.then(NightVision.registerCommand())
 						.then(NoFog.registerCommand())
 						.then(Notes.registerCommand())
+						.then(Overlay.registerCommand())
 						.then(PickupNotifier.registerCommand())
 						.then(ProjectileTrail.registerCommand())
 						.then(RandomDecimal.registerCommand())

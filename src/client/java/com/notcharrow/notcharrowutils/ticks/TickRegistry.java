@@ -16,6 +16,7 @@ public class TickRegistry {
 		DurabilityWarningTickHandler.register();
 		FastPlaceTickHandler.register();
 		NightVisionTickHandler.register();
+		OverlayTickHandler.register();
 		PickupNotifierTickHandler.register();
 		ProjectileTrailTickHandler.register();
 		StatisticsTickHandler.register();

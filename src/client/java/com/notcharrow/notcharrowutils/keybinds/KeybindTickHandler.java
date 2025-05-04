@@ -49,6 +49,7 @@ public class KeybindTickHandler {
 		});
 		HotbarCycleKeybinds.register();
 		SecondaryHotbarKeybinds.register();
+		WorldIconKeybind.register();
 		ZoomKeybind.register();
 	}
 }

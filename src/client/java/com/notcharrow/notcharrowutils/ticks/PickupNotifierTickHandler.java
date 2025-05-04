@@ -1,6 +1,7 @@
 package com.notcharrow.notcharrowutils.ticks;
 
 import com.notcharrow.notcharrowutils.config.ConfigManager;
+import com.notcharrow.notcharrowutils.config.NotchArrowUtilsConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
@@ -17,7 +18,7 @@ public class PickupNotifierTickHandler {
 	private static final Map<String, Integer> pickupDisplay = new HashMap<>();
 	private static final Map<String, Integer> pickupTimers = new HashMap<>();
 	private static final Map<String, Integer> previousCounts = new HashMap<>();
-	private static final Identifier EXAMPLE_LAYER = Identifier.of("com.notcharrow.notcharrowutils", "pickupnotifier");
+	private static final Identifier PICKUP_LAYER = Identifier.of("com.notcharrow.notcharrowutils", "pickupnotifier");
 
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -90,7 +91,7 @@ public class PickupNotifierTickHandler {
 				}
 			}
 		});
-			HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, EXAMPLE_LAYER, PickupNotifierTickHandler::render));
+			HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, PICKUP_LAYER, PickupNotifierTickHandler::render));
 	}
 
 	private static void render(DrawContext context, RenderTickCounter tickCounter) {
@@ -102,8 +103,8 @@ public class PickupNotifierTickHandler {
 		int y;
 		int yIncrement;
 		List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(pickupDisplay.entrySet());
-		if (Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_LEFT")
-				|| Objects.equals(ConfigManager.config.tickregistryPickupNotifierLocation, "TOP_RIGHT")) {
+		if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_LEFT
+				|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT) {
 			y = 20;
 			yIncrement = 10;
 			sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
@@ -132,8 +133,8 @@ public class PickupNotifierTickHandler {
 			}
 
 			int x;
-			if (ConfigManager.config.tickregistryPickupNotifierLocation.equals("TOP_RIGHT")
-					|| ConfigManager.config.tickregistryPickupNotifierLocation.equals("BOTTOM_RIGHT")) {
+			if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT
+					|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.BOTTOM_RIGHT) {
 				int textWidth = textRenderer.getWidth(displayText);
 				x = client.getWindow().getScaledWidth() - textWidth - 10;
 			} else {

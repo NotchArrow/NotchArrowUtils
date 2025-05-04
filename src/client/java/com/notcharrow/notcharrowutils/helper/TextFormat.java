@@ -15,7 +15,7 @@ public class TextFormat {
 				.withBold(ConfigManager.config.textformatBold)
 				.withItalic(ConfigManager.config.textformatItalic)
 				.withUnderline(ConfigManager.config.textformatUnderline)
-				.withColor(Formatting.byName(ConfigManager.config.textformatColor));
+				.withColor(Formatting.byName(ConfigManager.config.textformatColor.name()));
 		styledText.setStyle(textStyle);
 
 		if (ConfigManager.config.textformatPrefix) {
@@ -25,7 +25,7 @@ public class TextFormat {
 					.withBold(ConfigManager.config.textformatBoldPrefix)
 					.withItalic(ConfigManager.config.textformatItalicPrefix)
 					.withUnderline(ConfigManager.config.textformatUnderlinePrefix)
-					.withColor(Formatting.byName(ConfigManager.config.textformatColorPrefix));
+					.withColor(Formatting.byName(ConfigManager.config.textformatColorPrefix.name()));
 			prefixText.setStyle(prefixStyle);
 
 			styledText = prefixText.append(styledText);

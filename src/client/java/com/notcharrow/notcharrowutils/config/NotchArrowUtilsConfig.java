@@ -1,13 +1,43 @@
 package com.notcharrow.notcharrowutils.config;
 
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.stream.Collectors;
+
 public class NotchArrowUtilsConfig {
 	// Chat Colors and Formatting
-	public String textformatColor = "DARK_AQUA";
+	public enum ChatColors {
+		BLACK,
+		DARK_BLUE,
+		DARK_GREEN,
+		DARK_AQUA,
+		DARK_RED,
+		DARK_PURPLE,
+		GOLD,
+		GRAY,
+		DARK_GRAY,
+		BLUE,
+		GREEN,
+		AQUA,
+		RED,
+		LIGHT_PURPLE,
+		YELLOW,
+		WHITE;
+
+		@Override
+		public String toString() {
+			String lower = name().toLowerCase(Locale.ROOT).replace('_', ' ');
+			return Arrays.stream(lower.split(" "))
+					.map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
+					.collect(Collectors.joining(" "));
+		}
+	}
+	public ChatColors textformatColor = ChatColors.DARK_AQUA;
 	public boolean textformatBold = false;
 	public boolean textformatItalic = false;
 	public boolean textformatUnderline = false;
 	public boolean textformatPrefix = true;
-	public String textformatColorPrefix = "DARK_BLUE";
+	public ChatColors textformatColorPrefix = ChatColors.DARK_BLUE;
 	public boolean textformatBoldPrefix = true;
 	public boolean textformatItalicPrefix = false;
 	public boolean textformatUnderlinePrefix = false;
@@ -80,8 +110,50 @@ public class NotchArrowUtilsConfig {
 
 	public boolean tickregistryNightVision = false;
 
+	public boolean tickregistryOverlay = false;
+	public float tickregistryOverlayScale = 1.0f;
+	public enum OverlayLocation {
+		TOP_LEFT,
+		TOP_RIGHT,
+		BOTTOM_LEFT,
+		BOTTOM_RIGHT;
+
+		@Override
+		public String toString() {
+			String lower = name().toLowerCase(Locale.ROOT).replace('_', ' ');
+			return Arrays.stream(lower.split(" "))
+					.map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
+					.collect(Collectors.joining(" "));
+		}
+	}
+	public OverlayLocation tickregistryOverlayLocation = OverlayLocation.TOP_LEFT;
+	public boolean tickregistryOverlayTextShadow = true;
+	public boolean tickregistryOverlayCoordinates = true;
+	public boolean tickregistryOverlayFPS = true;
+	public boolean tickregistryOverlayPing = true;
+	public boolean tickregistryOverlaySpeed = true;
+	public boolean tickregistryOverlayFacing = true;
+	public boolean tickregistryOverlayDay = true;
+	public boolean tickregistryOverlayTime = true;
+	public boolean tickregistryOverlayBiome = true;
+	public boolean tickregistryOverlayTargetedBlock = false;
+
 	public boolean tickregistryPickupNotifier = false;
-	public String tickregistryPickupNotifierLocation = "BOTTOM_RIGHT";
+	public enum PickupNotifierLocation {
+		TOP_LEFT,
+		TOP_RIGHT,
+		BOTTOM_LEFT,
+		BOTTOM_RIGHT;
+
+		@Override
+		public String toString() {
+			String lower = name().toLowerCase(Locale.ROOT).replace('_', ' ');
+			return Arrays.stream(lower.split(" "))
+					.map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
+					.collect(Collectors.joining(" "));
+		}
+	}
+	public PickupNotifierLocation tickregistryPickupNotifierLocation = PickupNotifierLocation.TOP_RIGHT;
 	public int tickregistryPickupNotifierTime = 5;
 
 	public boolean tickregistryProjectileTrail = false;
