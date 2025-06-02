@@ -302,6 +302,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryOverlayCoordinates = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(overlay, "Display Item Durability", "Should the overlay display held item durability", ConfigManager.config.tickregistryOverlayHeldDurability,
+				newValue -> ConfigManager.config.tickregistryOverlayHeldDurability = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(overlay, "Display FPS", "Should the overlay display FPS", ConfigManager.config.tickregistryOverlayFPS,
 				newValue -> ConfigManager.config.tickregistryOverlayFPS = (Boolean) newValue,
 				parent);
@@ -347,6 +351,10 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 				newValue -> ConfigManager.config.tickregistryAutoAttackPlayer = (Boolean) newValue,
 				parent);
 
+		addConfigEntryBoolean(tweaks, "Auto Fish Recast", "Should Auto Fish recast after catching a fish", ConfigManager.config.tickregistryAutoFishRecast,
+				newValue -> ConfigManager.config.tickregistryAutoFishRecast = (Boolean) newValue,
+				parent);
+
 		addConfigEntryBoolean(tweaks, "Auto Tool From Inventory", "Should Auto Tool pull tools from your inventory (can flag anticheat)", ConfigManager.config.tickregistryAutoToolFromInventory,
 				newValue -> ConfigManager.config.tickregistryAutoToolFromInventory = (Boolean) newValue,
 				parent);
@@ -381,6 +389,14 @@ public class NotchArrowUtilsModMenu implements ModMenuApi {
 
 		addConfigEntryBoolean(tweaks, "Floating Fast Place", "Allows midair Fast Place, disabled in multiplayer", ConfigManager.config.tickregistryFloatingFastPlace,
 				newValue -> ConfigManager.config.tickregistryFloatingFastPlace = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(tweaks, "NightVision AntiBlindness", "Should the NightVision effect also remove Blindness", ConfigManager.config.tickregistryNightVisionAntiBlindness,
+				newValue -> ConfigManager.config.tickregistryNightVisionAntiBlindness = (Boolean) newValue,
+				parent);
+
+		addConfigEntryBoolean(tweaks, "NightVision AntiDarkness", "Should the NightVision effect also remove Darkness", ConfigManager.config.tickregistryNightVisionAntiDarkness,
+				newValue -> ConfigManager.config.tickregistryNightVisionAntiDarkness = (Boolean) newValue,
 				parent);
 
 		tweaks.addEntry(entryBuilder.startEnumSelector(

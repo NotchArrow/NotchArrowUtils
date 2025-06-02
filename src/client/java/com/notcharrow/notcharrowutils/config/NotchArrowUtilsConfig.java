@@ -74,6 +74,7 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryAutoElytra = false;
 
 	public boolean tickregistryAutoFish = false;
+	public boolean tickregistryAutoFishRecast = true;
 
 	public boolean tickregistryAutoRefill = false;
 
@@ -109,6 +110,8 @@ public class NotchArrowUtilsConfig {
 	public boolean tickregistryFloatingFastPlace = false;
 
 	public boolean tickregistryNightVision = false;
+	public boolean tickregistryNightVisionAntiBlindness;
+	public boolean tickregistryNightVisionAntiDarkness;
 
 	public boolean tickregistryOverlay = false;
 	public float tickregistryOverlayScale = 1.0f;
@@ -129,9 +132,10 @@ public class NotchArrowUtilsConfig {
 	public OverlayLocation tickregistryOverlayLocation = OverlayLocation.TOP_LEFT;
 	public boolean tickregistryOverlayTextShadow = true;
 	public boolean tickregistryOverlayCoordinates = true;
+	public boolean tickregistryOverlayHeldDurability = true;
 	public boolean tickregistryOverlayFPS = true;
 	public boolean tickregistryOverlayPing = true;
-	public boolean tickregistryOverlaySpeed = true;
+	public boolean tickregistryOverlaySpeed = false;
 	public boolean tickregistryOverlayFacing = true;
 	public boolean tickregistryOverlayDay = true;
 	public boolean tickregistryOverlayTime = true;

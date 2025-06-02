@@ -11,6 +11,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -36,6 +37,12 @@ public class OverlayTickHandler {
 					overlayLines.add(Text.of(client.player.getBlockX() + ", " + client.player.getBlockY() + ", " + client.player.getBlockZ()));
 				}
 
+				if (ConfigManager.config.tickregistryOverlayHeldDurability) {
+					ItemStack itemStack = client.player.getMainHandStack();
+					int durability = itemStack.getMaxDamage() - itemStack.getDamage();
+					overlayLines.add(Text.of("Durability: " + durability));
+				}
+
 				if (ConfigManager.config.tickregistryOverlayFPS) {
 					overlayLines.add(Text.of("FPS: " + client.getCurrentFps()));
 				}
@@ -58,12 +65,12 @@ public class OverlayTickHandler {
 				}
 
 				if (ConfigManager.config.tickregistryOverlayFacing) {
-					float yaw = client.player.getYaw();
+					float yaw = client.player.getYaw() % 360;
 					if (yaw < 0) {
 						yaw += 360;
 					}
 					String cardinal;
-					if (yaw >= 337.5 || yaw < 22.5) cardinal = "S";
+					if (yaw % 360 >= 337.5 || yaw % 360 < 22.5) cardinal = "S";
 					else if (yaw < 67.5) cardinal = "SW";
 					else if (yaw < 112.5) cardinal = "W";
 					else if (yaw < 157.5) cardinal = "NW";

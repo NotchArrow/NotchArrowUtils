@@ -23,7 +23,9 @@ public class AutoFishTickHandler {
 					if (bobber.getVelocity().y < -0.05 && waterContactTime != -1 && (System.nanoTime() - waterContactTime > 1_000_000_000)) {
 						client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
 						waterContactTime = -1;
-						client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+						if (ConfigManager.config.tickregistryAutoFishRecast) {
+							client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+						}
 					}
 				}
 			}

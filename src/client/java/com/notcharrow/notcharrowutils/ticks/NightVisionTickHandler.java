@@ -10,8 +10,12 @@ public class NightVisionTickHandler {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (ConfigManager.config.tickregistryNightVision && client.player != null) {
 				client.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false, false));
-				client.player.removeStatusEffect(StatusEffects.BLINDNESS);
-				client.player.removeStatusEffect(StatusEffects.DARKNESS);
+				if (ConfigManager.config.tickregistryNightVisionAntiBlindness) {
+					client.player.removeStatusEffect(StatusEffects.BLINDNESS);
+				}
+				if (ConfigManager.config.tickregistryNightVisionAntiDarkness) {
+					client.player.removeStatusEffect(StatusEffects.DARKNESS);
+				}
 			} else if (client.player != null) {
 				client.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
 			}
