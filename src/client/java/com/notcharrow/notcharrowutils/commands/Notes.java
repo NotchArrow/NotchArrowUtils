@@ -10,10 +10,10 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.BookEditScreen;
-import net.minecraft.component.type.WritableBookContentComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.text.RawFilteredPair;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.util.Hand;
 
 import java.io.IOException;
@@ -30,8 +30,8 @@ public class Notes {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 	private static boolean openBook = false;
 	private static BookEditScreen lastBookScreen = null;
-	private static ArrayList<RawFilteredPair<String>> savedPages = new ArrayList<>();
-	private static WritableBookContentComponent currentBookContent = new WritableBookContentComponent(savedPages);
+	private static List<String> savedPages = new ArrayList<>();
+	private static ItemStack currentBook = new ItemStack(Items.WRITABLE_BOOK);
 	private static final Gson GSON = new Gson();
 	private static final Path NOTES_FILE = Path.of("config/notcharrowutils_notes.json");
 
@@ -54,12 +54,10 @@ public class Notes {
 				if (client.player != null && client.player.getInventory().getMainHandStack().getItem() != Items.WRITABLE_BOOK) {
 					if (openBook) {
 						openBook = false;
-						currentBookContent = new WritableBookContentComponent(savedPages);
 						client.setScreen(new BookEditScreen(
 								client.player,
 								new ItemStack(Items.WRITABLE_BOOK),
-								Hand.MAIN_HAND,
-								currentBookContent
+								Hand.MAIN_HAND
 						));
 					}
 
@@ -69,9 +67,10 @@ public class Notes {
 						BookEditScreenAccessor accessor = (BookEditScreenAccessor) lastBookScreen;
 						List<String> editedPages = accessor.getPages();
 
-						savedPages.clear();
+						NbtList pagesNbt = new NbtList();
 						for (String page : editedPages) {
-							savedPages.add(RawFilteredPair.of(page));
+							String json = "\"" + page.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
+							pagesNbt.add(NbtString.of(json));
 						}
 
 						saveNotesToFile();
@@ -87,7 +86,6 @@ public class Notes {
 	private static void saveNotesToFile() {
 		try {
 			List<String> pageStrings = savedPages.stream()
-					.map(RawFilteredPair::raw)
 					.toList();
 			String json = GSON.toJson(pageStrings);
 			Files.writeString(NOTES_FILE, json, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -104,14 +102,14 @@ public class Notes {
 				Type listType = new TypeToken<List<String>>() {}.getType();
 				List<String> pages = GSON.fromJson(json, listType);
 				for (String page : pages) {
-					savedPages.add(RawFilteredPair.of(page));
+					savedPages.add(page);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			savedPages.add(RawFilteredPair.of("These notes persist across worlds, servers, and sessions. " +
-					"Store coordinates, build ideas, and more!"));
+			savedPages.add("These notes persist across worlds, servers, and sessions. " +
+					"Store coordinates, build ideas, and more!");
 		}
 	}
 }

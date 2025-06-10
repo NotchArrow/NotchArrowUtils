@@ -3,12 +3,9 @@ package com.notcharrow.notcharrowutils.ticks;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import com.notcharrow.notcharrowutils.config.NotchArrowUtilsConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
@@ -91,58 +88,57 @@ public class PickupNotifierTickHandler {
 				}
 			}
 		});
-			HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, PICKUP_LAYER, PickupNotifierTickHandler::render));
-	}
 
-	private static void render(DrawContext context, RenderTickCounter tickCounter) {
-		MinecraftClient client = MinecraftClient.getInstance();
-		if (client.player == null || pickupDisplay.isEmpty()) return;
+		HudRenderCallback.EVENT.register((context, tickDelta) -> {
+			MinecraftClient client = MinecraftClient.getInstance();
+			if (client.player == null || pickupDisplay.isEmpty()) return;
 
-		TextRenderer textRenderer = client.textRenderer;
+			TextRenderer textRenderer = client.textRenderer;
 
-		int y;
-		int yIncrement;
-		List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(pickupDisplay.entrySet());
-		if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_LEFT
-				|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT) {
-			y = 20;
-			yIncrement = 10;
-			sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
-					.thenComparing(e -> e.getKey().toLowerCase()));
-		} else {
-			y = client.getWindow().getScaledHeight() - 20;
-			yIncrement = -10;
-			sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
-					.thenComparing(e -> e.getKey().toLowerCase()).reversed());
-		}
-
-		for (Map.Entry<String, Integer> entry : sortedEntries) {
-			String itemName = entry.getKey();
-			int count = entry.getValue();
-
-			String displayText;
-			int color;
-			if (count > 0) {
-				displayText = "+ " + itemName + " x" + count;
-				color = 0x55FF55;
-			} else if (count < 0) {
-				displayText = "- " + itemName + " x" + Math.abs(count);
-				color = 0xFF5555;
+			int y;
+			int yIncrement;
+			List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(pickupDisplay.entrySet());
+			if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_LEFT
+					|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT) {
+				y = 20;
+				yIncrement = 10;
+				sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
+						.thenComparing(e -> e.getKey().toLowerCase()));
 			} else {
-				continue;
+				y = client.getWindow().getScaledHeight() - 20;
+				yIncrement = -10;
+				sortedEntries.sort(Comparator.comparing((Map.Entry<String, Integer> e) -> e.getValue() < 0 ? 1 : 0)
+						.thenComparing(e -> e.getKey().toLowerCase()).reversed());
 			}
 
-			int x;
-			if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT
-					|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.BOTTOM_RIGHT) {
-				int textWidth = textRenderer.getWidth(displayText);
-				x = client.getWindow().getScaledWidth() - textWidth - 10;
-			} else {
-				x = 10;
-			}
+			for (Map.Entry<String, Integer> entry : sortedEntries) {
+				String itemName = entry.getKey();
+				int count = entry.getValue();
 
-			context.drawText(client.textRenderer, displayText, x, y, color, true);
-			y += yIncrement;
-		}
+				String displayText;
+				int color;
+				if (count > 0) {
+					displayText = "+ " + itemName + " x" + count;
+					color = 0x55FF55;
+				} else if (count < 0) {
+					displayText = "- " + itemName + " x" + Math.abs(count);
+					color = 0xFF5555;
+				} else {
+					continue;
+				}
+
+				int x;
+				if (ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.TOP_RIGHT
+						|| ConfigManager.config.tickregistryPickupNotifierLocation == NotchArrowUtilsConfig.PickupNotifierLocation.BOTTOM_RIGHT) {
+					int textWidth = textRenderer.getWidth(displayText);
+					x = client.getWindow().getScaledWidth() - textWidth - 10;
+				} else {
+					x = 10;
+				}
+
+				context.drawText(client.textRenderer, displayText, x, y, color, true);
+				y += yIncrement;
+			}
+		});
 	}
 }

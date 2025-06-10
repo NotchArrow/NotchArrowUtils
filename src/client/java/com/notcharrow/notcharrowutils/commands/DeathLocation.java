@@ -22,14 +22,14 @@ public class DeathLocation {
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
 			if (client.player.getLastDeathPos().isPresent()) {
-				BlockPos deathPos = client.player.getLastDeathPos().get().pos();
+				BlockPos deathPos = client.player.getLastDeathPos().get().getPos();
 				int x = deathPos.getX();
 				int y = deathPos.getY();
 				int z = deathPos.getZ();
 				client.player.sendMessage(TextFormat.styledText("Death Location: " +
 						x + ", " + y + ", " + z), false);
 
-				RegistryKey<World> deathDimension = client.player.getLastDeathPos().get().dimension();
+				RegistryKey<World> deathDimension = client.player.getLastDeathPos().get().getDimension();
 				String deathDimensionName;
 				if (deathDimension == World.OVERWORLD) {
 					deathDimensionName = "Overworld";

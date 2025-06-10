@@ -17,7 +17,7 @@ public class AutoRocketTickHandler {
 	public static void register() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player != null && client.interactionManager != null && ConfigManager.config.tickregistryAutoRocket) {
-				if (client.player.getMainHandStack().getItem() == Items.FIREWORK_ROCKET && client.player.isGliding()) {
+				if (client.player.getMainHandStack().getItem() == Items.FIREWORK_ROCKET && client.player.isFallFlying()) {
 					if (System.currentTimeMillis() - lastRocketTime > ConfigManager.config.tickregistryAutoRocketMinDelay * 1000L
 							&& client.player.getBlockY() < ConfigManager.config.tickregistryAutoRocketMinY) {
 

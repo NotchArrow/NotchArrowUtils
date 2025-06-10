@@ -3,13 +3,10 @@ package com.notcharrow.notcharrowutils.ticks;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import com.notcharrow.notcharrowutils.config.NotchArrowUtilsConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -80,7 +77,7 @@ public class OverlayTickHandler {
 					else cardinal = "SE";
 
 					String coordChange = "";
-					Direction facing = Direction.fromHorizontalDegrees(client.player.getYaw());
+					Direction facing = Direction.fromHorizontal((int) client.player.getYaw());
 					if (facing.getAxis() == Direction.Axis.X) {
 						if (facing.getDirection() == Direction.AxisDirection.POSITIVE) {
 							coordChange = "(+X)";
@@ -144,46 +141,45 @@ public class OverlayTickHandler {
 				}
 			}
 		});
-		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, OVERLAY_LAYER, OverlayTickHandler::render));
-	}
 
-	private static void render(DrawContext context, RenderTickCounter tickCounter) {
-		if (ConfigManager.config.tickregistryOverlay) {
-			TextRenderer textRenderer = client.textRenderer;
-			MatrixStack matrices = context.getMatrices();
-			float scale = ConfigManager.config.tickregistryOverlayScale;
-			int color = 0xFFFFFF;
-			int y;
-			if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
-					ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_RIGHT) {
-				y = (int) (5 * scale);
-			} else {
-				y = (int) (client.getWindow().getScaledHeight() - 20 * scale);
-			}
-
-			for (Text displayText: overlayLines) {
-				int x;
-				if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
-				ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.BOTTOM_LEFT) {
-					x = (int) (5 * scale);
-				} else {
-					x = (int) (client.getWindow().getScaledWidth() - textRenderer.getWidth(displayText) * scale - 5 * scale);
-				}
-
-				matrices.push();
-				matrices.translate(x, y, 0);
-				matrices.scale(scale, scale, 1.0f);
-
-				context.drawText(textRenderer, displayText, 0, 0, color, ConfigManager.config.tickregistryOverlayTextShadow);
-
-				matrices.pop();
+		HudRenderCallback.EVENT.register((context, tickDelta) -> {
+			if (ConfigManager.config.tickregistryOverlay) {
+				TextRenderer textRenderer = client.textRenderer;
+				MatrixStack matrices = context.getMatrices();
+				float scale = ConfigManager.config.tickregistryOverlayScale;
+				int color = 0xFFFFFF;
+				int y;
 				if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
 						ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_RIGHT) {
-					y += (int) (10 * scale);
+					y = (int) (5 * scale);
 				} else {
-					y -= (int) (10 * scale);
+					y = (int) (client.getWindow().getScaledHeight() - 20 * scale);
+				}
+
+				for (Text displayText : overlayLines) {
+					int x;
+					if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
+							ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.BOTTOM_LEFT) {
+						x = (int) (5 * scale);
+					} else {
+						x = (int) (client.getWindow().getScaledWidth() - textRenderer.getWidth(displayText) * scale - 5 * scale);
+					}
+
+					matrices.push();
+					matrices.translate(x, y, 0);
+					matrices.scale(scale, scale, 1.0f);
+
+					context.drawText(textRenderer, displayText, 0, 0, color, ConfigManager.config.tickregistryOverlayTextShadow);
+
+					matrices.pop();
+					if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
+							ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_RIGHT) {
+						y += (int) (10 * scale);
+					} else {
+						y -= (int) (10 * scale);
+					}
 				}
 			}
-		}
+		});
 	}
 }

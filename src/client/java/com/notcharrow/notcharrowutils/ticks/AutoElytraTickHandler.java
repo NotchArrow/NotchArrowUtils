@@ -2,10 +2,10 @@ package com.notcharrow.notcharrowutils.ticks;
 
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.screen.slot.SlotActionType;
 
 public class AutoElytraTickHandler {
@@ -20,7 +20,7 @@ public class AutoElytraTickHandler {
 				}
 				if (swapOnJump
 						&& client.options.jumpKey.isPressed() && !client.player.isOnGround()
-						&& client.player.getInventory().getArmorStack(2).isIn(ItemTags.CHEST_ARMOR)) {
+						&& isChestplate(client.player.getInventory().getArmorStack(2))) {
 					int slot = -1;
 					for (int i = 0; i < client.player.getInventory().size(); i++) {
 						ItemStack stack = client.player.getInventory().getStack(i);
@@ -55,7 +55,7 @@ public class AutoElytraTickHandler {
 						int slot = -1;
 						for (int i = 0; i < client.player.getInventory().size(); i++) {
 							ItemStack stack = client.player.getInventory().getStack(i);
-							if (stack.isIn(ItemTags.CHEST_ARMOR)) {
+							if (isChestplate(stack)) {
 								slot = i;
 								break;
 							}
@@ -74,5 +74,15 @@ public class AutoElytraTickHandler {
 				}
 			}
 		});
+	}
+
+	private static boolean isChestplate(ItemStack itemStack) {
+		Item item = itemStack.getItem();
+		return item == Items.LEATHER_CHESTPLATE
+				|| item == Items.CHAINMAIL_CHESTPLATE
+				|| item == Items.IRON_CHESTPLATE
+				|| item == Items.GOLDEN_CHESTPLATE
+				|| item == Items.DIAMOND_CHESTPLATE
+				|| item == Items.NETHERITE_CHESTPLATE;
 	}
 }

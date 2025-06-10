@@ -3,10 +3,11 @@ package com.notcharrow.notcharrowutils.commands;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.client.MinecraftClient;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import com.notcharrow.notcharrowutils.helper.TextFormat;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.math.BlockPos;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
@@ -33,7 +34,8 @@ public class TravelAngle {
 				angle -= 360;
 			}
 
-			client.player.setAngles((float) angle, client.player.getPitch());
+			BlockPos pos = client.player.getBlockPos();
+			client.player.updatePositionAndAngles(pos.getX(), pos.getY(), pos.getZ(), (float) angle, client.player.getPitch());
 
 			angle = Math.round(angle * Math.pow(10, 1)) / Math.pow(10, 1); // Round to 1 decimal to match F3 for chat message
 			client.player.sendMessage(TextFormat.styledText("Optimal Travel Angle for " + destinationX + ", " + destinationZ + ": " + angle), false);

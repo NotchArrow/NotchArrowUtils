@@ -4,14 +4,13 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.notcharrow.notcharrowutils.helper.SuggestionBuilder;
+import com.notcharrow.notcharrowutils.helper.TextFormat;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.SoundManager;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import com.notcharrow.notcharrowutils.helper.SuggestionBuilder;
-import com.notcharrow.notcharrowutils.helper.TextFormat;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +37,7 @@ public class Jukebox {
 		String discName = StringArgumentType.getString(context, "disc");
 		SoundManager soundManager = client.getSoundManager();
 
-		RegistryEntry.Reference<SoundEvent> soundEvent = switch (discName) {
+		SoundEvent soundEvent = switch (discName) {
 			case "cat" -> SoundEvents.MUSIC_DISC_CAT;
 			case "wait" -> SoundEvents.MUSIC_DISC_WAIT;
 			case "13" -> SoundEvents.MUSIC_DISC_13;
@@ -55,9 +54,6 @@ public class Jukebox {
 			case "otherside" -> SoundEvents.MUSIC_DISC_OTHERSIDE;
 			case "relic" -> SoundEvents.MUSIC_DISC_RELIC;
 			case "5" -> SoundEvents.MUSIC_DISC_5;
-			case "creator" -> SoundEvents.MUSIC_DISC_CREATOR;
-			case "creator_music" -> SoundEvents.MUSIC_DISC_CREATOR_MUSIC_BOX;
-			case "precipice" -> SoundEvents.MUSIC_DISC_PRECIPICE;
 			default -> null;
 		};
 
@@ -66,7 +62,7 @@ public class Jukebox {
 				discName = discName.substring(0, 1).toUpperCase() + discName.substring(1);
 				client.player.sendMessage(TextFormat.styledText("Now playing: " + discName), false);
 				soundManager.stopAll();
-				client.player.playSound(soundEvent.value(), Float.MAX_VALUE, 1.0F);
+				client.player.playSound(soundEvent, Float.MAX_VALUE, 1.0F);
 			} else if (discName.equals("stop")) {
 				client.player.sendMessage(TextFormat.styledText("Disc stopped."), false);
 				soundManager.stopAll();
