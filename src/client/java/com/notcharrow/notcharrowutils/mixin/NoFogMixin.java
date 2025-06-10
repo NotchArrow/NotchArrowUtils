@@ -16,7 +16,7 @@ public class NoFogMixin {
 	private static void removeFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
 		MinecraftClient client = MinecraftClient.getInstance();
 
-		if (client.world != null && ConfigManager.config.mixinNoFog && viewDistance > 0 && fogType != BackgroundRenderer.FogType.FOG_SKY) {
+		if (client.world != null && ConfigManager.config.mixinNoFog && viewDistance > 0) {
 			ci.cancel();
 		}
 	}

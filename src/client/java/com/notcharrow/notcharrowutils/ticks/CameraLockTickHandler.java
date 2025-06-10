@@ -1,8 +1,7 @@
 package com.notcharrow.notcharrowutils.ticks;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
-import net.minecraft.util.math.BlockPos;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -23,8 +22,8 @@ public class CameraLockTickHandler {
 				}
 
 				if (ConfigManager.config.tickregistryCameraLock) {
-					BlockPos pos = client.player.getBlockPos();
-					client.player.updatePositionAndAngles(pos.getX(), pos.getY(), pos.getZ(), yaw.get(), pitch.get());
+					client.player.setPitch(pitch.get());
+					client.player.setYaw(yaw.get());
 				}
 			}
 		});

@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,8 @@ public class OverlayTickHandler {
 					else cardinal = "SE";
 
 					String coordChange = "";
-					Direction facing = Direction.fromHorizontal((int) client.player.getYaw());
+					yaw = MathHelper.floorMod(MathHelper.floor(client.player.getYaw() * 4.0F / 360.0F + 0.5F), 4);
+					Direction facing = Direction.fromHorizontal((int) yaw);
 					if (facing.getAxis() == Direction.Axis.X) {
 						if (facing.getDirection() == Direction.AxisDirection.POSITIVE) {
 							coordChange = "(+X)";
