@@ -12,6 +12,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.BookEditScreen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.util.Hand;
@@ -21,7 +22,6 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.List;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
@@ -30,7 +30,7 @@ public class Notes {
 	private static final MinecraftClient client = MinecraftClient.getInstance();
 	private static boolean openBook = false;
 	private static BookEditScreen lastBookScreen = null;
-	private static List<String> savedPages = new ArrayList<>();
+	private static NbtList savedPages = new NbtList();
 	private static ItemStack currentBook = new ItemStack(Items.WRITABLE_BOOK);
 	private static final Gson GSON = new Gson();
 	private static final Path NOTES_FILE = Path.of("config/notcharrowutils_notes.json");
@@ -49,6 +49,11 @@ public class Notes {
 			if (client.player.getInventory().getMainHandStack().getItem() == Items.WRITABLE_BOOK) {
 				client.player.sendMessage(TextFormat.styledText("Cannot open notes while holding a book."), false);
 			}
+
+			currentBook.setNbt(currentBook.getOrCreateNbt());
+			currentBook.getNbt().put("pages", savedPages);
+
+
 			openBook = true;
 			ClientTickEvents.END_CLIENT_TICK.register(client -> {
 				if (client.player != null && client.player.getInventory().getMainHandStack().getItem() != Items.WRITABLE_BOOK) {
@@ -56,7 +61,7 @@ public class Notes {
 						openBook = false;
 						client.setScreen(new BookEditScreen(
 								client.player,
-								new ItemStack(Items.WRITABLE_BOOK),
+								currentBook,
 								Hand.MAIN_HAND
 						));
 					}
@@ -67,10 +72,9 @@ public class Notes {
 						BookEditScreenAccessor accessor = (BookEditScreenAccessor) lastBookScreen;
 						List<String> editedPages = accessor.getPages();
 
-						NbtList pagesNbt = new NbtList();
+						savedPages.clear();
 						for (String page : editedPages) {
-							String json = "\"" + page.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
-							pagesNbt.add(NbtString.of(json));
+							savedPages.add(NbtString.of(page));
 						}
 
 						saveNotesToFile();
@@ -85,9 +89,12 @@ public class Notes {
 
 	private static void saveNotesToFile() {
 		try {
-			List<String> pageStrings = savedPages.stream()
+			List<String> noteList = savedPages.stream()
+					.filter(nbt -> nbt instanceof NbtString)
+					.map(NbtElement::asString)
 					.toList();
-			String json = GSON.toJson(pageStrings);
+
+			String json = GSON.toJson(noteList);
 			Files.writeString(NOTES_FILE, json, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -102,14 +109,14 @@ public class Notes {
 				Type listType = new TypeToken<List<String>>() {}.getType();
 				List<String> pages = GSON.fromJson(json, listType);
 				for (String page : pages) {
-					savedPages.add(page);
+					savedPages.add(NbtString.of(page));
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			savedPages.add("These notes persist across worlds, servers, and sessions. " +
-					"Store coordinates, build ideas, and more!");
+			savedPages.add(NbtString.of("These notes persist across worlds, servers, and sessions. " +
+					"Store coordinates, build ideas, and more!"));
 		}
 	}
 }
