@@ -8,6 +8,8 @@ import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
+import java.net.URI;
+
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public class Help {
@@ -20,10 +22,11 @@ public class Help {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
+			URI uri = URI.create("https://modrinth.com/mod/notcharrowutils");
 			client.player.sendMessage(
 					Text.literal("https://modrinth.com/mod/notcharrowutils")
 							.setStyle(Style.EMPTY.withClickEvent(
-									new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/mod/notcharrowutils")
+									new ClickEvent.OpenUrl(uri)
 							)), false
 			);
 		}

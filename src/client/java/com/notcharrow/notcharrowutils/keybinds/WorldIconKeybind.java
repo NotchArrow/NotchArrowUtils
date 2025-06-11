@@ -23,30 +23,31 @@ public class WorldIconKeybind {
 
 					lastCaptureTime = System.currentTimeMillis();
 
-					NativeImage nativeImage = ScreenshotRecorder.takeScreenshot(client.getFramebuffer());
-					Path path = client.getServer().getSavePath(WorldSavePath.ICON_PNG);
+					ScreenshotRecorder.takeScreenshot(client.getFramebuffer(), (NativeImage nativeImage) -> {
+						Path path = client.getServer().getSavePath(WorldSavePath.ICON_PNG);
 
-					Util.getIoWorkerExecutor().execute(() -> {
-						int i = nativeImage.getWidth();
-						int j = nativeImage.getHeight();
-						int k = 0;
-						int l = 0;
-						if (i > j) {
-							k = (i - j) / 2;
-							i = j;
-						} else {
-							l = (j - i) / 2;
-							j = i;
-						}
+						Util.getIoWorkerExecutor().execute(() -> {
+							int i = nativeImage.getWidth();
+							int j = nativeImage.getHeight();
+							int k = 0;
+							int l = 0;
+							if (i > j) {
+								k = (i - j) / 2;
+								i = j;
+							} else {
+								l = (j - i) / 2;
+								j = i;
+							}
 
-						try (NativeImage resized = new NativeImage(64, 64, false)) {
-							nativeImage.resizeSubRectTo(k, l, i, j, resized);
-							resized.writeTo(path);
-						} catch (IOException e) {
-							e.printStackTrace();
-						} finally {
-							nativeImage.close();
-						}
+							try (NativeImage resized = new NativeImage(64, 64, false)) {
+								nativeImage.resizeSubRectTo(k, l, i, j, resized);
+								resized.writeTo(path);
+							} catch (IOException e) {
+								e.printStackTrace();
+							} finally {
+								nativeImage.close();
+							}
+						});
 					});
 
 					client.player.sendMessage(TextFormat.styledText("World Icon Updated Successfully!"), false);

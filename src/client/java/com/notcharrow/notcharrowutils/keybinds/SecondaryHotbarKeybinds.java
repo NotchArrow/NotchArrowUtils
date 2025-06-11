@@ -9,23 +9,23 @@ public class SecondaryHotbarKeybinds {
 			if (client.player != null) {
 				PlayerInventory inventory = client.player.getInventory();
 				if (KeybindRegistry.hotbarSlot1Keybind.isPressed()) {
-					inventory.selectedSlot = 0;
+					inventory.setSelectedSlot(0);
 				} else if (KeybindRegistry.hotbarSlot2Keybind.isPressed()) {
-					inventory.selectedSlot = 1;
+					inventory.setSelectedSlot(1);
 				} else if (KeybindRegistry.hotbarSlot3Keybind.isPressed()) {
-					inventory.selectedSlot = 2;
+					inventory.setSelectedSlot(2);
 				} else if (KeybindRegistry.hotbarSlot4Keybind.isPressed()) {
-					inventory.selectedSlot = 3;
+					inventory.setSelectedSlot(3);
 				} else if (KeybindRegistry.hotbarSlot5Keybind.isPressed()) {
-					inventory.selectedSlot = 4;
+					inventory.setSelectedSlot(4);
 				} else if (KeybindRegistry.hotbarSlot6Keybind.isPressed()) {
-					inventory.selectedSlot = 5;
+					inventory.setSelectedSlot(5);
 				} else if (KeybindRegistry.hotbarSlot7Keybind.isPressed()) {
-					inventory.selectedSlot = 6;
+					inventory.setSelectedSlot(6);
 				} else if (KeybindRegistry.hotbarSlot8Keybind.isPressed()) {
-					inventory.selectedSlot = 7;
+					inventory.setSelectedSlot(7);
 				} else if (KeybindRegistry.hotbarSlot9Keybind.isPressed()) {
-					inventory.selectedSlot = 8;
+					inventory.setSelectedSlot(8);
 				}
 			}
 		});

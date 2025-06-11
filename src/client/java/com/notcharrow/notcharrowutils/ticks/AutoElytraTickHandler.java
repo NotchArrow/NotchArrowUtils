@@ -20,7 +20,7 @@ public class AutoElytraTickHandler {
 				}
 				if (swapOnJump
 						&& client.options.jumpKey.isPressed() && !client.player.isOnGround()
-						&& client.player.getInventory().getArmorStack(2).isIn(ItemTags.CHEST_ARMOR)) {
+						&& client.player.getInventory().getStack(38).isIn(ItemTags.CHEST_ARMOR)) {
 					int slot = -1;
 					for (int i = 0; i < client.player.getInventory().size(); i++) {
 						ItemStack stack = client.player.getInventory().getStack(i);
@@ -49,7 +49,7 @@ public class AutoElytraTickHandler {
 
 				if (client.player.isOnGround()) {
 					swapOnJump = false;
-					if (swapBack && client.player.isOnGround() && client.player.getInventory().getArmorStack(2).getItem() == Items.ELYTRA) {
+					if (swapBack && client.player.isOnGround() && client.player.getInventory().getStack(38).getItem() == Items.ELYTRA) {
 						swapBack = false;
 
 						int slot = -1;

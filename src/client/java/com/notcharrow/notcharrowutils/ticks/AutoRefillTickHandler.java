@@ -15,11 +15,11 @@ public class AutoRefillTickHandler {
 	public static void register() {
 		ClientTickEvents.START_CLIENT_TICK.register(client -> {
 			if (client.player != null && client.interactionManager != null && ConfigManager.config.tickregistryAutoRefill) {
-				if (client.player.getInventory().getMainHandStack().isEmpty()
-					&& client.player.getInventory().selectedSlot == previousSlot
+				if (client.player.getInventory().getStack(client.player.getInventory().getSelectedSlot()).isEmpty()
+					&& client.player.getInventory().getSelectedSlot() == previousSlot
 					&& client.currentScreen == null) {
 
-					int currentSlot = client.player.getInventory().selectedSlot;
+					int currentSlot = client.player.getInventory().getEmptySlot();
 					int moreItemsSlot = -1;
 
 					for (int i = 0; i < client.player.getInventory().size(); i++) {
@@ -32,15 +32,15 @@ public class AutoRefillTickHandler {
 
 					if (moreItemsSlot != -1) {
 						if (moreItemsSlot < 9 && moreItemsSlot != currentSlot) {
-							client.player.getInventory().selectedSlot = moreItemsSlot;
+							client.player.getInventory().setSelectedSlot(moreItemsSlot);
 						} else if (moreItemsSlot >= 9) {
 							swapItemToHotbar(client, moreItemsSlot, currentSlot);
 						}
 					}
 				}
 
-				previousHeld = client.player.getInventory().getMainHandStack().getItem();
-				previousSlot = client.player.getInventory().selectedSlot;
+				previousHeld = client.player.getInventory().getStack(client.player.getInventory().getSelectedSlot()).getItem();
+				previousSlot = client.player.getInventory().getSelectedSlot();
 			}
 		});
 	}

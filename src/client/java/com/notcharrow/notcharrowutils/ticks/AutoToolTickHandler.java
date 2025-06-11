@@ -25,11 +25,11 @@ public class AutoToolTickHandler {
 					Block block = client.world.getBlockState(blockHit.getBlockPos()).getBlock();
 
 					if (ConfigManager.config.tickregistryAutoToolSwitchBack && !switchBack) {
-						oldSlot = client.player.getInventory().selectedSlot;
+						oldSlot = client.player.getInventory().getSelectedSlot();
 						switchBack = true;
 					}
 
-					int currentSlot = client.player.getInventory().selectedSlot;
+					int currentSlot = client.player.getInventory().getSelectedSlot();
 					int bestSlot = -1;
 					float bestSpeed = 0;
 
@@ -52,16 +52,16 @@ public class AutoToolTickHandler {
 					if (bestSlot != -1) {
 						// If tool is in hotbar but not in preferred slot, switch directly
 						if (bestSlot < 9 && bestSlot != currentSlot) {
-							client.player.getInventory().selectedSlot = bestSlot;
+							client.player.getInventory().setSelectedSlot(bestSlot);
 						} else if (bestSlot >= 9) {
 							// If tool is in inventory, move it to toolSlot
 							swapItemToHotbar(client, bestSlot, ConfigManager.config.tickregistryAutoToolSlot - 1);
-							client.player.getInventory().selectedSlot = ConfigManager.config.tickregistryAutoToolSlot - 1;
+							client.player.getInventory().setSelectedSlot(ConfigManager.config.tickregistryAutoToolSlot - 1);
 						}
 					}
 				}
 				if (switchBack && !client.options.attackKey.isPressed()) {
-					client.player.getInventory().selectedSlot = oldSlot;
+					client.player.getInventory().setSelectedSlot(oldSlot);
 					switchBack = false;
 				}
 			}

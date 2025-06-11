@@ -29,7 +29,7 @@ public class AutoRocketTickHandler {
 						if (client.player.getMainHandStack().getCount() == 1) { // Switch to new stack if needed
 							for (int i = 0; i < 9; i++) {
 								if (client.player.getInventory().getStack(i).getItem() == Items.FIREWORK_ROCKET) {
-									client.player.getInventory().selectedSlot = i;
+									client.player.getInventory().setSelectedSlot(i);
 									break;
 								}
 							}

@@ -33,7 +33,7 @@ public class PickupNotifierTickHandler {
 			final int DISPLAY_TIME = ConfigManager.config.tickregistryPickupNotifierTime * 20;
 
 			Map<String, Integer> currentCounts = new HashMap<>();
-			for (ItemStack stack : client.player.getInventory().main) {
+			for (ItemStack stack : client.player.getInventory()) {
 				if (!stack.isEmpty()) {
 					String itemName = stack.getItem().getName().getString();
 					currentCounts.put(itemName, currentCounts.getOrDefault(itemName, 0) + stack.getCount());

@@ -46,12 +46,12 @@ public class Notes {
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
 		if (client.player != null) {
-			if (client.player.getInventory().getMainHandStack().getItem() == Items.WRITABLE_BOOK) {
+			if (client.player.getInventory().getStack(client.player.getInventory().getSelectedSlot()).getItem() == Items.WRITABLE_BOOK) {
 				client.player.sendMessage(TextFormat.styledText("Cannot open notes while holding a book."), false);
 			}
 			openBook = true;
 			ClientTickEvents.END_CLIENT_TICK.register(client -> {
-				if (client.player != null && client.player.getInventory().getMainHandStack().getItem() != Items.WRITABLE_BOOK) {
+				if (client.player != null && client.player.getInventory().getStack(client.player.getInventory().getSelectedSlot()).getItem() != Items.WRITABLE_BOOK) {
 					if (openBook) {
 						openBook = false;
 						currentBookContent = new WritableBookContentComponent(savedPages);
