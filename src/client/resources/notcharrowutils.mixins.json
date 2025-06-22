@@ -9,6 +9,7 @@
   "client": [
     "BookEditScreenAccessor",
     "ConstantMusicMixin",
+    "FogRendererAccessor",
     "NoFogMixin",
     "StatisticsMixin"
   ]

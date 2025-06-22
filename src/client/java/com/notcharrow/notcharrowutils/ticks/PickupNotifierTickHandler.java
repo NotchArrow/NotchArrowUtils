@@ -3,8 +3,7 @@ package com.notcharrow.notcharrowutils.ticks;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import com.notcharrow.notcharrowutils.config.NotchArrowUtilsConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -91,7 +90,7 @@ public class PickupNotifierTickHandler {
 				}
 			}
 		});
-			HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, PICKUP_LAYER, PickupNotifierTickHandler::render));
+		HudRenderCallback.EVENT.register(PickupNotifierTickHandler::render);
 	}
 
 	private static void render(DrawContext context, RenderTickCounter tickCounter) {
@@ -124,10 +123,10 @@ public class PickupNotifierTickHandler {
 			int color;
 			if (count > 0) {
 				displayText = "+ " + itemName + " x" + count;
-				color = 0x55FF55;
+				color = 0xFF55FF55;
 			} else if (count < 0) {
 				displayText = "- " + itemName + " x" + Math.abs(count);
-				color = 0xFF5555;
+				color = 0xFFFF5555;
 			} else {
 				continue;
 			}

@@ -7,6 +7,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 
@@ -65,7 +66,7 @@ public class AutoRocketTickHandler {
 					if (client.isInSingleplayer()) {
 						client.openGameMenu(true);
 					} else {
-						client.world.disconnect();
+						client.world.disconnect(Text.of("NotchArrowUtils disconnect after safe elytra landing."));
 					}
 				}
 			}

@@ -3,20 +3,19 @@ package com.notcharrow.notcharrowutils.ticks;
 import com.notcharrow.notcharrowutils.config.ConfigManager;
 import com.notcharrow.notcharrowutils.config.NotchArrowUtilsConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Direction;
+import org.joml.Matrix3x2fStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,15 +143,15 @@ public class OverlayTickHandler {
 				}
 			}
 		});
-		HudLayerRegistrationCallback.EVENT.register(layeredDrawer -> layeredDrawer.attachLayerBefore(IdentifiedLayer.CHAT, OVERLAY_LAYER, OverlayTickHandler::render));
+		HudRenderCallback.EVENT.register(OverlayTickHandler::render);
 	}
 
 	private static void render(DrawContext context, RenderTickCounter tickCounter) {
 		if (ConfigManager.config.tickregistryOverlay) {
 			TextRenderer textRenderer = client.textRenderer;
-			MatrixStack matrices = context.getMatrices();
+			Matrix3x2fStack matrices = context.getMatrices();
 			float scale = ConfigManager.config.tickregistryOverlayScale;
-			int color = 0xFFFFFF;
+			int color = 0xFFFFFFFF;
 			int y;
 			if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
 					ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_RIGHT) {
@@ -170,13 +169,13 @@ public class OverlayTickHandler {
 					x = (int) (client.getWindow().getScaledWidth() - textRenderer.getWidth(displayText) * scale - 5 * scale);
 				}
 
-				matrices.push();
-				matrices.translate(x, y, 0);
-				matrices.scale(scale, scale, 1.0f);
+				matrices.pushMatrix();
+				matrices.translate(x, y);
+				matrices.scale(scale, scale);
 
 				context.drawText(textRenderer, displayText, 0, 0, color, ConfigManager.config.tickregistryOverlayTextShadow);
 
-				matrices.pop();
+				matrices.popMatrix();
 				if (ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_LEFT ||
 						ConfigManager.config.tickregistryOverlayLocation == NotchArrowUtilsConfig.OverlayLocation.TOP_RIGHT) {
 					y += (int) (10 * scale);
