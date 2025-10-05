@@ -1,5 +1,5 @@
 {
-  "category.notcharrowutils": "NotchArrow Utils",
+  "key.category.minecraft.notcharrowutils.main": "NotchArrow Utils",
   "key.notcharrowutils.autoAttackKeybind": "Auto Attack",
   "key.notcharrowutils.autoFishKeybind": "Auto Fish",
   "key.notcharrowutils.autoRefillKeybind": "Auto Refill",
@@ -15,7 +15,7 @@
   "key.notcharrowutils.worldIconKeybind": "Capture World Icon",
   "key.notcharrowutils.zoomKeybind": "Zoom",
 
-  "category.notcharrowutils.hotbar": "Secondary Hotbar Keybinds",
+  "key.category.minecraft.notcharrowutils.hotbar": "Secondary Hotbar Keybinds",
   "key.notcharrowutils.hotbar.hotbarSlot1Keybind": "Hotbar Slot 1 Secondary",
   "key.notcharrowutils.hotbar.hotbarSlot2Keybind": "Hotbar Slot 2 Secondary",
   "key.notcharrowutils.hotbar.hotbarSlot3Keybind": "Hotbar Slot 3 Secondary",

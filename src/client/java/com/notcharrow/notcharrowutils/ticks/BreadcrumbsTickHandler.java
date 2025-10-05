@@ -14,7 +14,7 @@ public class BreadcrumbsTickHandler {
 		List<Vec3d> particlePositions = new ArrayList<>();
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (ConfigManager.config.tickregistryBreadcrumbs && client.world != null && client.player != null) {
-				Vec3d playerPos = client.player.getPos();
+				Vec3d playerPos = client.player.getEntityPos();
 
 				if (client.player.isOnGround()) {
 					boolean tooConcentrated = false;
