@@ -1,38 +1,119 @@
 ![image](https://github.com/user-attachments/assets/f880eb3a-25aa-4063-97ac-105c323d53c0)
 
-
-A clientside QoL fabric mod for Minecraft
-
-[Modrinth Download](https://modrinth.com/mod/notcharrowutils)
-
-# Showcase
-![image](https://github.com/user-attachments/assets/d9ed4f1b-4f02-4fa8-af95-4bf0affe63f8)
-
-![image](https://github.com/user-attachments/assets/3f30a8af-18a3-4de4-bf25-39821d1a8e6c)
-![image](https://github.com/user-attachments/assets/73919c4d-9563-42bd-b2d6-5e8a22921101)
-![image](https://github.com/user-attachments/assets/c57e9917-4479-4c13-bf86-924062e36534)
-
-Simple autocomplete and configuration
-
-![image](https://github.com/user-attachments/assets/b99babf5-0c65-4ddd-b8ab-07d9108a2a97)
-
-Pickup notifications
-
-# Dependencies
-You will need:
-* [Fabric API](https://modrinth.com/mod/fabric-api)
-* [Cloth Config](https://modrinth.com/mod/cloth-config)
-* [Mod Menu](https://modrinth.com/mod/modmenu)
+![Feature Showcase](https://cdn.modrinth.com/data/cached_images/6a63e8c901e8c222baa461925391921199e58d2f.jpeg)
 
 # Information
-A comprehensive list of features can be found in the [Wiki](https://github.com/NotchArrow/notcharrowutils/wiki/Commands).
+Highlighted Features:
+- Auto Clicker
+- Auto Elytra
+- Auto Fish
+- Auto Replant
+- Auto Sprint
+- Auto Tool
+- Calculator
+- Constant Music
+- Hotbar Cycling & Refilling
+- Information Overlay
+- Nightvision
+- No Fog
+- Notes
+- Zoom
 
-Additional documentation will eventually be provided discussing ModMenu configuration settings.
+A comprehensive list of features can be found below.
+
+[Mod Menu](https://modrinth.com/mod/modmenu) & [Cloth Config](https://modrinth.com/mod/cloth-config) are highly recommended for configuration, but many things can be done through commands.
 
 This mod is entirely **clientside** meaning it can be used on any server, but some features may flag anticheat or be bannable. Use at your own risk.
 
-Thank you for using my mod! I'd love to hear any feedback.
+Give requests and feedback in my [Discord](https://discord.gg/ZCaGkZeb4C)!
 
-![image](https://sloc.xyz/github/NotchArrow/notcharrowutils/?category=lines)
-![image](https://img.shields.io/modrinth/dt/notcharrowutils?style=plastic&logo=modrinth&label=Modrinth&link=https%3A%2F%2Fmodrinth.com%2Fmodpack%2Fnotcharrowutils)
-[![CodeFactor](https://www.codefactor.io/repository/github/notcharrow/notcharrowutils/badge)](https://www.codefactor.io/repository/github/notcharrow/notcharrowutils)
+# All Commands/Features
+> Everything is disabled by default. Pick exactly what you want to use!
+
+---
+
+## Automation Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils autoattack`       | Toggles automatic attacking on mobs you are looking at.                    |
+| `/utils autoelytra`   | Toggles swapping elytra and chestplate when you want to fly and when you land.|
+| `/utils autofish`         | Starts autofishing after casting into water.                              |
+| `/utils autorefill`       | Refills the hotbar when running out of an item.                            |
+| `/utils autoreplant`      | Automatically replants crops when right-clicking with seeds.               |
+| `/utils autorocket`       | Uses firework rockets with elytra automatically.                          |
+| `/utils autosprint`       | Enables sprinting when moving forward.                                     |
+| `/utils autotool`         | Switches to the best tool when breaking a block.                           |
+| `/utils fastplace`        | Enables fast block placing (1 per tick).                                   |
+
+---
+
+## Utility Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils afkoptimize`      | Mutes sound & reduces FPS for AFK farming.                                 |
+| `/utils breadcrumbs`      | Leaves a particle trail to help you find your way back.                    |
+| `/utils cameralock`       | Locks/unlocks camera position, useful with `/utils travelangle`.            |
+| `/utils coordinateoverlay`| Displays coordinates above the hotbar.                                     |
+| `/utils deathlocation`    | Shows your most recent death location.                                      |
+| `/utils nightvision`      | Enables client-side night vision.                                           |
+| `/utils nofog`            | Disables fog effects.                                                       |
+| `/utils notes`            | Opens a Book & Quill GUI for storing notes.                                 |
+| `/utils stormpause`       | Pauses singleplayer when it starts storming.                                |
+
+---
+
+## Information Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils clock`            | Shows current in-game day & time in 24-hour format.                        |
+| `/utils durabilitywarnings` | Toggles tool/armor durability warnings.                                  |
+| `/utils enchantinfo (enchantment)` | Provides detailed information about the specified enchantment.  |
+| `/utils expinfo`          | Displays experience level information.                                     |
+| `/utils inventory info`   | Lists items in your inventory by quantity (descending).                     |
+| `/utils jobblocks`        | Lists all villager profession blocks and their matching jobs.              |
+| `/utils overlay`          | Toggles the main information overlay.                                     |
+| `/utils pickupnotifier`   | Toggles notifications for item pickups and drops.                          |
+| `/utils statistics`       | Displays session stats in the pause menu (Singleplayer only).               |
+
+---
+
+## Fun Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils coinflip`         | Returns `Heads!` or `Tails!` at 50/50 odds.                                 |
+| `/utils constantmusic`    | Removes the pauses between Minecraft music.                                 |
+| `/utils jukebox (disc)`   | Plays the specified disc. Use `/utils jukebox stop` to stop playback.       |
+| `/utils projectiletrails`   | Toggles particle trails following projectiles.       |
+| `/utils smoothcamera`   | Toggles smooth camera movements, like using a spyglass or zooming.       |
+
+---
+
+## Math Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils calculate (expression)` | Evaluates a math expression using [exp4j](https://github.com/fasseg/exp4j). |
+| `/utils calculatorvariables` | Lists built-in and custom calculator variables.                          |
+| `/utils mynethercoords`   | Converts Overworld coordinates to Nether by dividing by 8.                   |
+| `/utils myoverworldcoords`| Converts Nether coordinates to Overworld by multiplying by 8.              |
+| `/utils randomdecimal (min) (max) (places)` | Generates a random float within range.                    |
+| `/utils randomnumber (min) (max)` | Generates a random integer within range.                    |
+| `/utils travelangle (x) (z)` | Calculates optimal travel angle and adjusts camera.                      |
+
+---
+
+## Misc Commands
+| Command                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| `/utils help`             | Links to [Modrinth](https://modrinth.com/mod/notcharrowutils). |
+
+---
+
+## Features Without Commands
+| Feature | Description | Type |
+|---------|-------------|-------|
+|Hotbar Cycling | Changes the active row of the inventory. | Keybind(s) |
+|Secondary Hotbar Keybinds | A second set of hotkeys for the hotbar. | Keybind(s) |
+|World Icon Updater | Take a screenshot that is saved as the world icon. | Keybind |
+|Zoom  | Zooms in the camera. | Keybind |
+
+---
